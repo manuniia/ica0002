@@ -1,0 +1,24 @@
+- name: Install uwsgi
+  ansible.builtin.apt:
+    name: 
+      - uwsgi
+      - uwsgi-plugin-python3
+    state: present
+
+- name: Create uWSGI config directory 
+  file:
+    path: /etc/uwsgi/apps-enabled
+    state: directory
+
+- name: Copy uwsgi configuration for AGAMA
+  ansible.builtin.copy:
+    src: agama.ini
+    dest: /etc/uwsgi/apps-enabled/agama.ini
+    mode: 0600
+  notify: Restart uWSGI
+
+- name: uWSGI service
+  ansible.builtin.service:
+    name: uwsgi
+    state: started
+    enabled: true

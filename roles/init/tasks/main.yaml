@@ -5,22 +5,22 @@
   ansible.builtin.apt:
     cache_valid_time: 86400
 
-- name: Create a user 'Juri'
-  ansible.builtin.user:
-    name: Juri
+# - name: Create a user 'Juri'
+#   ansible.builtin.user:
+#     name: Juri
 
-- name: Set authorized key for Juri
-  ansible.posix.authorized_key:
-    user: Juri
-    state: present
-    key: https://github.com/hudolejev.keys
+# - name: Set authorized key for Juri
+#   ansible.posix.authorized_key:
+#     user: Juri
+#     state: present
+#     key: https://github.com/hudolejev.keys
 
-- name: Create a user 'Roman'
-  ansible.builtin.user:
-    name: Roman
+# - name: Create a user 'Roman'
+#   ansible.builtin.user:
+#     name: Roman
 
-- name: Set authorized key for Roman
-  ansible.posix.authorized_key:
-    user: Roman
-    state: present
-    key: https://github.com/romankuchin.keys
+# - name: Set authorized key for Roman
+#   ansible.posix.authorized_key:
+#     user: Roman
+#     state: present
+#     key: https://github.com/romankuchin.keys
