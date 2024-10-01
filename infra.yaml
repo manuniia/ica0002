@@ -1,7 +1,13 @@
 - name: Initial setup
   hosts: all
+  gather_facts: yes
   roles:
     - init
+
+- name: Database server
+  hosts: db_servers
+  roles:
+    - mysql
 
 - name: Web server
   hosts: web_servers
