@@ -5,18 +5,18 @@
       - python3-pymysql
     state: present
 
-- name: mysql service
-  ansible.builtin.service:
-    name: mysql
-    state: started
-    enabled: true
-
 - name: Copy mysqld configuration
   ansible.builtin.copy:
     src: mysqld.cnf
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
   notify: Restart mysql    
 
+- name: mysql service
+  ansible.builtin.service:
+    name: mysql
+    state: started
+    enabled: true
+    
 - name: MySQL database
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
@@ -24,6 +24,7 @@
 
 - name: MySQL user
   community.mysql.mysql_user:
+    column_case_sensitive: true
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
     host: "%"

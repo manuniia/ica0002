@@ -1,12 +1,11 @@
 - name: Initial setup
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   roles:
     - init
 
 - name: DNS server
   hosts: dns_servers
-  gather_facts: yes
   roles:
     - bind
   tags: 
@@ -14,7 +13,6 @@
 
 - name: Resolver
   hosts: all
-  gather_facts: yes
   roles:
     - resolver
   tags: 

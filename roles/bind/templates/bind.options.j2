@@ -1,6 +1,7 @@
 acl nets {
-    192.168.42.0/23;
-    127.0.0.0/8;
+{% for ip in nets %}
+        {{ ip }};
+{% endfor %}
 };
 
 options {
@@ -9,9 +10,9 @@ options {
 	directory "/var/cache/bind";
 
 	forwarders {
-	 	1.1.1.1;
-        8.8.8.8;
-        9.9.9.9;
+{% for ip in forwarders %}
+        {{ ip }};
+{% endfor %}
 	};
 
     dnssec-validation no;
