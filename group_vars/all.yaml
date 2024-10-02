@@ -3,7 +3,7 @@ port1:
 port2:
 
 #mysql
-mysql_host: 192.168.42.101 
+mysql_host: "{{ hostvars['manuniia-2']['ansible_default_ipv4']['address'] }}"
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -15,4 +15,4 @@ mysql_password: !vault |
           6161
 
 #dns
-startup_name:
+startup_name: slayble.ttu

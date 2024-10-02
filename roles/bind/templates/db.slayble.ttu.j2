@@ -1,0 +1,11 @@
+$TTL	604800
+{{ startup_name }}.	IN	SOA	ns.{{ startup_name }}. mail.{{ startup_name }}. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+{{ startup_name }}.	IN	NS	manuniia-1
+manuniia-1	IN	A	{{ hostvars['manuniia-1']['ansible_default_ipv4']['address'] }}
+manuniia-2	IN	A	{{ hostvars['manuniia-2']['ansible_default_ipv4']['address'] }}

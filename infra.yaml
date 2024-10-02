@@ -4,6 +4,22 @@
   roles:
     - init
 
+- name: DNS server
+  hosts: dns_servers
+  gather_facts: yes
+  roles:
+    - bind
+  tags: 
+    - b
+
+- name: Resolver
+  hosts: all
+  gather_facts: yes
+  roles:
+    - resolver
+  tags: 
+    - b
+
 - name: Database server
   hosts: db_servers
   roles:

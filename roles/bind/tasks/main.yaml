@@ -1,0 +1,25 @@
+- name: Install bind
+  ansible.builtin.apt:
+    name: bind9
+    state: present
+
+- name: Copy bind9 configuration
+  ansible.builtin.template:
+    src: bind.{{ item }}.j2
+    dest: /etc/bind/named.conf.{{ item }}
+  loop:
+    - options
+    - local
+  notify: Restart bind9
+
+- name: Configure dns zone 
+  ansible.builtin.template:
+    src: db.{{ startup_name }}.j2
+    dest: /var/cache/bind/db.{{ startup_name }}
+  notify: rndc reload
+
+- name: bind9 service
+  ansible.builtin.service:
+    name: bind9
+    state: started
+    enabled: true

@@ -1,0 +1,19 @@
+acl nets {
+    192.168.42.0/23;
+    127.0.0.0/8;
+};
+
+options {
+    
+    allow-query { nets; };
+	directory "/var/cache/bind";
+
+	forwarders {
+	 	1.1.1.1;
+        8.8.8.8;
+        9.9.9.9;
+	};
+
+    dnssec-validation no;
+};
+
