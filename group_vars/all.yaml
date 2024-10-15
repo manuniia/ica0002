@@ -29,4 +29,4 @@ nets:
 
 
 #prometheus
-external_url: http://193.40.156.67:19780
+external_url: 193.40.156.67:19280

@@ -1,0 +1,6 @@
+
+# Query to get memory consumption for each VM
+avg_over_time(node_memory_MemAvailable_bytes{job="vm"}[1m])
+
+# Query to get average CPU load for each VM
+avg_over_time(node_load1{job="vm"}[1m])

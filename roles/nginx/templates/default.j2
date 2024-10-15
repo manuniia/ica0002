@@ -8,8 +8,8 @@ server {
 	}
 	
 {% if inventory_hostname in groups['prometheus'] %}
-    location /prometheus {
-        proxy_pass http://prometheus:9090;
-    }
+	location /prometheus {
+		proxy_pass http://manuniia-2:9090/prometheus;
+	}
 {% endif %}
 }
