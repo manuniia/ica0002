@@ -26,3 +26,7 @@ forwarders:
 nets: 
     - 192.168.42.0/23
     - 127.0.0.0/8
+
+
+#prometheus
+external_url: http://193.40.156.67:19780

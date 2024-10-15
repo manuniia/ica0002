@@ -29,3 +29,13 @@
     - agama
     - uwsgi
     - nginx
+  tags: 
+    - w
+
+- name: prometheus
+  hosts: prometheus
+  roles:
+    - prometheus
+    - nginx
+  tags: 
+    - p

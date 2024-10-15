@@ -1,0 +1,16 @@
+- name: config prometheus.yml file
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  notify: Restart prometheus
+
+- name: config prometheus default file
+  ansible.builtin.template:
+    src: default.j2
+    dest: /etc/default/prometheus
+
+- name: Start prometheus service
+  ansible.builtin.service:
+    name: prometheus
+    state: started
+    enabled: yes
