@@ -1,21 +1,33 @@
+- name: create my.cnf file
+  ansible.builtin.template:
+    src: my.cnf.j2
+    dest: /var/lib/prometheus/.my.cnf
+    mode: 400
+    owner: prometheus
+  no_log: yes
+
 - name: Install mysql
   ansible.builtin.apt:
     name: 
       - mysql-server
       - python3-pymysql
+      - prometheus-mysqld-exporter
     state: present
 
 - name: Copy mysqld configuration
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: mysqld.cnf
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
   notify: Restart mysql    
 
-- name: mysql service
-  ansible.builtin.service:
-    name: mysql
+- name: Ensure MySQL and exporter are enable and running
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
     state: started
-    enabled: true
+  loop:
+    - mysql
+    - prometheus-mysqld-exporter
     
 - name: MySQL database
   community.mysql.mysql_db:
@@ -30,3 +42,12 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: MySQL exporter user
+  community.mysql.mysql_user:
+    name: "{{ mysql_exporter_user }}"
+    password: "{{ mysql_exporter_password }}"
+    host: "%"
+    priv: "{{ mysql_database }}.*:ALL"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    
