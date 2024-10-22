@@ -45,9 +45,9 @@
 
 - name: MySQL exporter user
   community.mysql.mysql_user:
+    column_case_sensitive: true
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_password }}"
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    

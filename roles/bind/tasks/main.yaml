@@ -1,6 +1,7 @@
 - name: Install bind
   ansible.builtin.apt:
-    name: bind9
+    name: 
+      - bind9
     state: present
 
 - name: Copy bind9 configuration
@@ -18,8 +19,41 @@
     dest: /var/cache/bind/db.{{ startup_name }}
   notify: rndc reload
 
-- name: bind9 service
-  ansible.builtin.service:
-    name: bind9
+# - name: Extract bind_exporter-0.6.1 into /usr/local/bin/
+#   ansible.builtin.unarchive:
+#     src: https://github.com/prometheus-community/bind_exporter/releases/download/v0.6.1/bind_exporter-0.6.1.linux-amd64.tar.gz
+#     dest: /usr/local/bin
+#     include: 
+#       - bind_exporter-0.6.1.linux-amd64/bind_exporter
+#     mode: '0755'
+#     remote_src: yes
+
+- name: Extract bind_exporter-0.6.1 into /usr/local/bin/
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus-community/bind_exporter/releases/download/v0.6.1/bind_exporter-0.6.1.linux-amd64.tar.gz
+    dest: /opt
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /opt/bind_exporter-0.6.1.linux-amd64/bind_exporter
+    dest: /usr/local/bin
+    mode: '0755'
+    remote_src: yes
+
+- name: Configure bind9-exporter 
+  ansible.builtin.template:
+    src: prometheus-bind9-exporter.j2
+    dest: /etc/systemd/system/prometheus-bind9-exporter.service
+  notify: daemon-reload
+
+- name: Ensure bind9 and exporter are enable and running
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
     state: started
-    enabled: true
+  loop:
+    - bind9
+    - prometheus-bind9-exporter
+
+

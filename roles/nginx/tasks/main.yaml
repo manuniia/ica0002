@@ -1,16 +1,25 @@
 - name: Install nginx
   ansible.builtin.apt:
-    name: nginx
+    name: 
+      - nginx
+      - prometheus-nginx-exporter
     state: present
 
 - name: Copy nginx configuration
   ansible.builtin.template:
     src: default.j2
     dest: /etc/nginx/sites-enabled/default
-  notify: Restart nginx
+  notify: 
+      - Restart nginx
+      # - Restart prometheus-nginx-exporter
 
-- name: nginx service
-  ansible.builtin.service:
-    name: nginx
+- meta: flush_handlers
+
+- name: Ensure nginx and exporter are enable and running
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
     state: started
-    enabled: true
+  loop:
+    - nginx
+    - prometheus-nginx-exporter

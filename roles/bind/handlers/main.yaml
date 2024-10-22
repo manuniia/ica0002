@@ -5,3 +5,7 @@
 
 - name: rndc reload
   ansible.builtin.command: rndc reload
+
+- name: daemon-reload
+  systemd:
+    daemon_reload: true

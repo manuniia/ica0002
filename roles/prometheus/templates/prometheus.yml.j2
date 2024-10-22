@@ -26,6 +26,7 @@ rule_files:
 scrape_configs:
 
   - job_name: 'prometheus'
+    metrics_path: /prometheus/metrics
     static_configs:
       - targets: 
 {% for n in groups['prometheus'] %}
@@ -37,4 +38,25 @@ scrape_configs:
       - targets:
 {% for n in groups['all'] %}
         - {{ n }}:9100
+{% endfor %}
+
+  - job_name: mysql
+    static_configs:
+      - targets: 
+{% for n in groups['db_servers'] %}
+        - {{ n }}:9104
+{% endfor %}
+
+  - job_name: bind9
+    static_configs:
+      - targets: 
+{% for n in groups['dns_servers'] %}
+        - {{ n }}:9119
+{% endfor %}
+
+  - job_name: nginx
+    static_configs:
+      - targets: 
+{% for n in groups['all'] %}
+        - {{ n }}:9113
 {% endfor %}

@@ -22,6 +22,8 @@
   hosts: db_servers
   roles:
     - mysql
+  tags: 
+    - db
 
 - name: Web server
   hosts: web_servers
@@ -36,6 +38,13 @@
   hosts: prometheus
   roles:
     - prometheus
-    - nginx
   tags: 
     - p
+
+- name: grafana
+  hosts: grafana
+  roles:
+    - grafana
+    - nginx
+  tags: 
+    - g

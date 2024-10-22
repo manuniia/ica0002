@@ -1,0 +1,37 @@
+- name: Add Grafana APT GPG key
+  apt_key:
+      url: https://apt.grafana.com/gpg.key
+
+- name: Add Grafana APT repository
+  apt_repository:
+    repo: deb https://apt.grafana.com stable main
+    state: present
+
+- name: Install Grafana OSS
+  apt:
+    name: grafana
+    state: present
+
+- name: Copy grafana configuration to grafana.ini
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: Restart grafana
+  no_log: true
+
+- name: Create grafana dashboards directory
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: Copy main.json to dashboards
+  ansible.builtin.copy:
+    src: roles/grafana/files/main.json
+    dest: /var/lib/grafana/dashboards/main.json
+  notify: Restart grafana
+
+- name: Ensure grafana is enable and running
+  systemd:
+    name: grafana-server
+    enabled: yes
+    state: started
