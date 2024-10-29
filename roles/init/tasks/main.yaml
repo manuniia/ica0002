@@ -10,6 +10,16 @@
     name: prometheus
     state: present
 
+- name: install rsyslog
+  ansible.builtin.apt:
+    name: rsyslog
+    state: present
+
+- name: Copy rsyslog conf for telegraf
+  ansible.builtin.template:
+    src: ../templates/50-telegraf.conf
+    dest: /etc/rsyslog.d/50-telegraf.conf
+
 # - name: Create a user 'Juri'
 #   ansible.builtin.user:
 #     name: Juri

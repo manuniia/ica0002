@@ -19,15 +19,6 @@
     dest: /var/cache/bind/db.{{ startup_name }}
   notify: rndc reload
 
-# - name: Extract bind_exporter-0.6.1 into /usr/local/bin/
-#   ansible.builtin.unarchive:
-#     src: https://github.com/prometheus-community/bind_exporter/releases/download/v0.6.1/bind_exporter-0.6.1.linux-amd64.tar.gz
-#     dest: /usr/local/bin
-#     include: 
-#       - bind_exporter-0.6.1.linux-amd64/bind_exporter
-#     mode: '0755'
-#     remote_src: yes
-
 - name: Extract bind_exporter-0.6.1 into /usr/local/bin/
   ansible.builtin.unarchive:
     src: https://github.com/prometheus-community/bind_exporter/releases/download/v0.6.1/bind_exporter-0.6.1.linux-amd64.tar.gz

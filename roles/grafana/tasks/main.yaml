@@ -19,6 +19,12 @@
   notify: Restart grafana
   no_log: true
 
+- name: Copy grafana provisioning datasources
+  ansible.builtin.template:
+    src: sources.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/sources.yaml
+  notify: Restart grafana
+
 - name: Create grafana dashboards directory
   file:
     path: /var/lib/grafana/dashboards

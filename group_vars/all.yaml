@@ -39,7 +39,7 @@ nets:
 
 
 #prometheus
-external_url: 193.40.156.67:36680
+external_url: 193.40.156.67:6080
 
 #grafana
 grafana_port: 3000

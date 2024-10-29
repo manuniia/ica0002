@@ -48,3 +48,10 @@
     - nginx
   tags: 
     - g
+
+- name: influxdb
+  hosts: influxdb
+  roles:
+    - influxdb
+  tags: 
+    - i
