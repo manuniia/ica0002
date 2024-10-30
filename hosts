@@ -1,5 +1,5 @@
-manuniia-1 ansible_host=193.40.156.67 ansible_port=16622 ansible_user=ubuntu
-manuniia-2 ansible_host=193.40.156.67 ansible_port=6022 ansible_user=ubuntu
+manuniia-1 ansible_host=193.40.156.67 ansible_port=30322 ansible_user=ubuntu
+manuniia-2 ansible_host=193.40.156.67 ansible_port=38122 ansible_user=ubuntu
 
 [dns_servers]
 manuniia-2
@@ -8,6 +8,9 @@ manuniia-2
 manuniia-2
 
 [web_servers]
+manuniia-1
+
+[agama_client_servers]
 manuniia-1
 
 [prometheus]

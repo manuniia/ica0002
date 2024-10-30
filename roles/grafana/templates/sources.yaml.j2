@@ -5,7 +5,7 @@ datasources:
   type: prometheus
   access: proxy
   orgId: 1
-  url: http://manuniia-2:9090/prometheus
+  url: http://prometheus:9090/prometheus
   version: 1
   editable: false
 
@@ -14,7 +14,7 @@ datasources:
   access: proxy
   database: agama_client_db
   orgId: 1
-  url: http://manuniia-1:8086/
+  url: http://influxdb:8086/
   version: 1
   editable: false
 
@@ -23,7 +23,7 @@ datasources:
   access: proxy
   database: telegraf
   orgId: 1
-  url: http://manuniia-1:8086/
+  url: http://telegraf:8086/
   version: 1
   editable: false
 

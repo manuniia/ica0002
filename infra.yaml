@@ -34,6 +34,13 @@
   tags: 
     - w
 
+- name: Agama client server
+  hosts: agama_client_servers
+  roles:
+    - agama-client
+  tags: 
+    - c
+
 - name: prometheus
   hosts: prometheus
   roles:

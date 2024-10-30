@@ -1,0 +1,11 @@
+[Unit]
+Description= agama client service for gethering data from agama
+Documentation=https://github.com/manuniia/ica0002/blob/main/roles/agama/templates/agama-client
+After=network-online.target
+
+[Service]
+User=agama-client
+ExecStart=/usr/local/bin/agama-client
+
+[Install]
+WantedBy=multi-user.target

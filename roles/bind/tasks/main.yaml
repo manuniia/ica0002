@@ -10,7 +10,6 @@
     dest: /etc/bind/named.conf.{{ item }}
   loop:
     - options
-    - local
   notify: Restart bind9
 
 - name: Configure dns zone 
