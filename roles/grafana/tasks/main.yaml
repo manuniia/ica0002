@@ -25,6 +25,12 @@
     dest: /etc/grafana/provisioning/datasources/sources.yaml
   notify: Restart grafana
 
+- name: Copy grafana provisioning dashboards
+  ansible.builtin.template:
+    src: boards.yaml.j2
+    dest: /etc/grafana/provisioning/dashboards/sample.yaml 
+  notify: Restart grafana
+
 - name: Create grafana dashboards directory
   file:
     path: /var/lib/grafana/dashboards
@@ -32,8 +38,12 @@
 
 - name: Copy main.json to dashboards
   ansible.builtin.copy:
-    src: roles/grafana/files/main.json
-    dest: /var/lib/grafana/dashboards/main.json
+    src: ../files/{{ item }}.json
+    dest: /var/lib/grafana/dashboards/{{ item }}.json
+  loop:
+      - main
+      - telegraf
+      - agama-client
   notify: Restart grafana
 
 - name: Ensure grafana is enable and running

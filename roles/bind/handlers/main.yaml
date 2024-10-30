@@ -3,8 +3,8 @@
     name: bind9
     state: restarted
 
-- name: rndc reload
-  ansible.builtin.command: rndc reload
+# - name: rndc reload
+#   ansible.builtin.command: rndc reload
 
 - name: daemon-reload
   systemd:

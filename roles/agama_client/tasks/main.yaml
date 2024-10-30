@@ -29,3 +29,9 @@
   ansible.builtin.template:
     src: agama-client.conf.j2
     dest: /etc/agama-client/agama-client.conf
+
+- name: Ensure agama-client is enable and running
+  systemd:
+    name: agama-client
+    enabled: yes
+    state: started

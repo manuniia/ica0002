@@ -16,7 +16,7 @@
   ansible.builtin.template:
     src: db.{{ startup_name }}.j2
     dest: /var/cache/bind/db.{{ startup_name }}
-  notify: rndc reload
+  notify: Restart bind9
 
 - name: Extract bind_exporter-0.6.1 into /usr/local/bin/
   ansible.builtin.unarchive:

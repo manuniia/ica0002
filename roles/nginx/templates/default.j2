@@ -9,13 +9,13 @@ server {
 	
 {% if inventory_hostname in groups['prometheus'] %}
 	location /prometheus {
-		proxy_pass http://manuniia-2:9090/prometheus;
+		proxy_pass http://prometheus:9090/prometheus;
 	}
 {% endif %}
 
 {% if inventory_hostname in groups['grafana'] %}
     location /grafana {
-        proxy_pass http://manuniia-2:{{ grafana_port }}/grafana;
+        proxy_pass http://grafana:{{ grafana_port }}/grafana;
         proxy_set_header Host $http_host;
     }
 {% endif %}

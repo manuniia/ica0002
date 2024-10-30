@@ -3,6 +3,8 @@
   gather_facts: true
   roles:
     - init
+  tags:
+    - init
 
 - name: DNS server
   hosts: dns_servers
@@ -37,7 +39,7 @@
 - name: Agama client server
   hosts: agama_client_servers
   roles:
-    - agama-client
+    - agama_client
   tags: 
     - c
 
@@ -45,6 +47,7 @@
   hosts: prometheus
   roles:
     - prometheus
+    - nginx
   tags: 
     - p
 
