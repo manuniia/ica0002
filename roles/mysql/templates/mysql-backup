@@ -1,0 +1,4 @@
+10 23 * * *  backup  mysqldump agama > /home/backup/mysql/agama.sql
+
+15 23 * * *  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://manuniia@backup/mysql
+

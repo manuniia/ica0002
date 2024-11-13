@@ -43,3 +43,16 @@
     name: telegraf
     enabled: yes
     state: started
+
+- name: Create /home/backup/influxdb directory 
+  file:
+    path: /home/backup/influxdb
+    state: directory
+    owner: backup
+    group: backup
+
+- name: Create cron file for influxdb
+  ansible.builtin.template:
+    src: ../templates/influxdb-backup
+    dest: /etc/cron.d/influxdb-backup
+

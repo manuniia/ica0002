@@ -1,9 +1,17 @@
-- name: create my.cnf file
+- name: create my.cnf file for prometheus
   ansible.builtin.template:
-    src: my.cnf.j2
+    src: my.cnf.prometheus.j2
     dest: /var/lib/prometheus/.my.cnf
     mode: 400
     owner: prometheus
+  no_log: yes
+
+- name: create my.cnf file for backup
+  ansible.builtin.template:
+    src: my.cnf.backup.j2
+    dest: /home/backup/.my.cnf
+    mode: 400
+    owner: backup
   no_log: yes
 
 - name: Install mysql
@@ -51,3 +59,25 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create /home/backup/mysql directory 
+  file:
+    path: /home/backup/mysql
+    state: directory
+    owner: backup
+    group: backup
+
+- name: MySQL backup user
+  community.mysql.mysql_user:
+    column_case_sensitive: true
+    name: "{{ mysql_backup_user }}"
+    password: "{{ mysql_backup_password }}"
+    host: "%"
+    priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create cron file for mysql
+  ansible.builtin.template:
+    src: ../templates/mysql-backup
+    dest: /etc/cron.d/mysql-backup
+  notify: Restart mysql   
