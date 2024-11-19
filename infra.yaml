@@ -21,11 +21,13 @@
     - b
 
 - name: Database server
+  gather_facts: true
   hosts: db_servers
   roles:
     - mysql
   tags: 
     - db
+    - mx
 
 - name: Web server
   hosts: web_servers
@@ -35,6 +37,7 @@
     - nginx
   tags: 
     - w
+    - mx
 
 - name: Agama client server
   hosts: agama_client_servers

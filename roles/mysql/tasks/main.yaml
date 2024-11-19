@@ -41,6 +41,9 @@
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
 
 - name: MySQL user
   community.mysql.mysql_user:
@@ -56,7 +59,7 @@
     column_case_sensitive: true
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_password }}"
-    host: "%"
+    host: "{{ inventory_hostname }}"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
@@ -72,7 +75,7 @@
     column_case_sensitive: true
     name: "{{ mysql_backup_user }}"
     password: "{{ mysql_backup_password }}"
-    host: "%"
+    host: "{{ inventory_hostname }}"
     priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
@@ -81,3 +84,22 @@
     src: ../templates/mysql-backup
     dest: /etc/cron.d/mysql-backup
   notify: Restart mysql   
+
+- name: MySQL replication user
+  community.mysql.mysql_user:
+    column_case_sensitive: true
+    name: "{{ mysql_rep_user }}"
+    password: "{{ mysql_rep_password }}"
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Read only mode for replica server
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica

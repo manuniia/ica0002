@@ -22,11 +22,34 @@
     dest: /etc/influxdb/influxdb.conf
   notify: Restart influxdb
 
-- name: Ensure influxdb is enable and running
+- name: Create directory for influxdb-stats-exporter
+  file:
+    path: /usr/local/bin
+    state: directory
+    mode: '0755'
+
+- name: Download InfluxDB Stats Exporter binary
+  get_url:
+    url: "https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64"
+    dest: /usr/local/bin/influxdb_stats_exporter
+    mode: '0755'
+  register: influxdb_stats_exporter_download
+
+- name: Create cron file for influxdb
+  ansible.builtin.template:
+    src: influxdb_stats_exporter.j2
+    dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
+    mode: '0755'
+  notify: Restart influxdb
+
+- name: Ensure bind9 and exporter are enable and running
   systemd:
-    name: influxdb
+    name: "{{ item }}"
     enabled: yes
     state: started
+  loop:
+    - influxdb
+    - prometheus-influxdb-stats-exporter
 
 - name: install telegraf
   ansible.builtin.apt:
@@ -55,4 +78,5 @@
   ansible.builtin.template:
     src: ../templates/influxdb-backup
     dest: /etc/cron.d/influxdb-backup
+
 

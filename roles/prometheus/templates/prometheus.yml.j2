@@ -60,3 +60,15 @@ scrape_configs:
 {% for n in groups['all'] %}
         - {{ n }}:9113
 {% endfor %}
+
+  - job_name: influxdb
+    static_configs:
+      - targets: 
+{% for n in groups['influxdb'] %}
+        - {{ n }}:9424
+{% endfor %}
+
+  - job_name: backup
+    static_configs:
+        - targets: 
+          - backup:9111

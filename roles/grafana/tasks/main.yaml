@@ -44,6 +44,8 @@
       - main
       - telegraf
       - agama-client
+      - backups
+      - mysql
   notify: Restart grafana
 
 - name: Ensure grafana is enable and running
