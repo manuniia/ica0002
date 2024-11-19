@@ -1,9 +1,5 @@
 ansible_python_interpreter: python3
 
-#ports
-port1:
-port2:
-
 #mysql
 mysql_host: "{{ hostvars['manuniia-2']['ansible_default_ipv4']['address'] }}"
 mysql_database: agama
@@ -61,7 +57,7 @@ nets:
     - 127.0.0.0/8
 
 
-#prometheus
+#external_url
 external_url: "193.40.156.67:{{ external_port }}80"
 external_port: "{{ (ansible_port / 100) | int }}"
 

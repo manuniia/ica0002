@@ -2,15 +2,16 @@
   ansible.builtin.template:
     src: my.cnf.prometheus.j2
     dest: /var/lib/prometheus/.my.cnf
-    mode: 400
+    mode: '400'
     owner: prometheus
   no_log: yes
+  notify: Restart prometheus-mysqld-exporter
 
 - name: create my.cnf file for backup
   ansible.builtin.template:
     src: my.cnf.backup.j2
     dest: /home/backup/.my.cnf
-    mode: 400
+    mode: '400'
     owner: backup
   no_log: yes
 
@@ -53,6 +54,7 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  no_log: true
 
 - name: MySQL exporter user
   community.mysql.mysql_user:
@@ -62,6 +64,7 @@
     host: "{{ inventory_hostname }}"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  no_log: true
 
 - name: Create /home/backup/mysql directory 
   file:
@@ -78,6 +81,7 @@
     host: "{{ inventory_hostname }}"
     priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  no_log: true
 
 - name: Create cron file for mysql
   ansible.builtin.template:
@@ -93,6 +97,7 @@
     host: "%"
     priv: "*.*:REPLICATION SLAVE"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  no_log: true
 
 - name: Read only mode for replica server
   community.mysql.mysql_variables:

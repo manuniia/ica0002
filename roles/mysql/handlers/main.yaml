@@ -3,6 +3,11 @@
     name: mysql
     state: restarted
 
+- name: Restart prometheus-mysqld-exporter
+  ansible.builtin.service:
+    name: prometheus-mysqld-exporter
+    state: restarted
+
 - name: Reset MySQL source
   community.mysql.mysql_replication:
     mode: "{{ item }}"
