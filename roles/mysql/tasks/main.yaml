@@ -61,7 +61,7 @@
     column_case_sensitive: true
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_password }}"
-    host: "{{ inventory_hostname }}"
+    host: localhost
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
@@ -78,14 +78,14 @@
     column_case_sensitive: true
     name: "{{ mysql_backup_user }}"
     password: "{{ mysql_backup_password }}"
-    host: "{{ inventory_hostname }}"
+    host: localhost
     priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
 
 - name: Create cron file for mysql
   ansible.builtin.template:
-    src: ../templates/mysql-backup
+    src: mysql-backup
     dest: /etc/cron.d/mysql-backup
   notify: Restart mysql   
 
@@ -107,4 +107,4 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
   notify:
     - Reset MySQL source
-    - Reset MySQL replica
+    - Reset MySQL replicas
