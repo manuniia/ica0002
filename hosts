@@ -1,12 +1,12 @@
-manuniia-1 ansible_host=193.40.156.67 ansible_port=13822 ansible_user=ubuntu
-manuniia-2 ansible_host=193.40.156.67 ansible_port=6422 ansible_user=ubuntu
+manuniia-1 ansible_host=193.40.156.67 ansible_port=8322 ansible_user=ubuntu
+manuniia-2 ansible_host=193.40.156.67 ansible_port=7722 ansible_user=ubuntu
 
 [dns_servers]
 manuniia-2
 
 [db_servers]
-manuniia-2
 manuniia-1
+manuniia-2
 
 [web_servers]
 manuniia-1

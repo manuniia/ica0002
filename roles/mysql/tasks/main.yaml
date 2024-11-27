@@ -62,9 +62,10 @@
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_password }}"
     host: localhost
-    priv: "{{ mysql_database }}.*:ALL"
+    priv: "*.*:PROCESS,REPLICATION CLIENT,SELECT"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
+  notify: Restart prometheus-mysqld-exporter
 
 - name: Create /home/backup/mysql directory 
   file:
@@ -86,8 +87,13 @@
 - name: Create cron file for mysql
   ansible.builtin.template:
     src: mysql-backup
-    dest: /etc/cron.d/mysql-backup
-  notify: Restart mysql   
+    dest: /etc/cron.d/mysql-backup 
+
+# - name: Update Prometheus MySQL exporter to export MySQL replication metrics
+#   ansible.builtin.template:
+#     src: prometheus-mysqld-exporter.j2
+#     dest: /etc/default/prometheus-mysqld-exporter
+#   notify: Restart mysql   
 
 - name: MySQL replication user
   community.mysql.mysql_user:
@@ -107,4 +113,5 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
   notify:
     - Reset MySQL source
-    - Reset MySQL replicas
+    - Reset MySQL replica
+

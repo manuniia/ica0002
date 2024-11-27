@@ -35,14 +35,14 @@
     mode: '0755'
   register: influxdb_stats_exporter_download
 
-- name: Create cron file for influxdb
+- name: Create system file for influxdb exporter
   ansible.builtin.template:
     src: influxdb_stats_exporter.j2
     dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
     mode: '0755'
   notify: Restart influxdb
 
-- name: Ensure bind9 and exporter are enable and running
+- name: Ensure influxdb and exporter are enable and running
   systemd:
     name: "{{ item }}"
     enabled: yes

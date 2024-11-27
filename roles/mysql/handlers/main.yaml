@@ -29,4 +29,4 @@
     - changeprimary
     - resetreplica
     - startreplica
-  when: inventory_hostname == mysql_host
+  when: inventory_hostname != mysql_host

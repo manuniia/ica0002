@@ -1,45 +1,34 @@
-- name: Add Grafana APT GPG key
-  apt_key:
-      url: https://apt.grafana.com/gpg.key
+- name: Create directories for grafana container
+  file:
+    name: "/opt/grafana/provisioning/{{ item }}"
+    state: directory
+  loop:
+    - dashboards
+    - datasources
 
-- name: Add Grafana APT repository
-  apt_repository:
-    repo: deb https://apt.grafana.com stable main
-    state: present
-
-- name: Install Grafana OSS
-  apt:
-    name: grafana
-    state: present
-
-- name: Copy grafana configuration to grafana.ini
+- name: Pre-create grafana.ini file for grafana container
   ansible.builtin.template:
     src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
-  notify: Restart grafana
+    dest: /opt/grafana/grafana.ini
   no_log: true
+  notify: Restart grafana
 
 - name: Copy grafana provisioning datasources
   ansible.builtin.template:
     src: sources.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/sources.yaml
+    dest: /opt/grafana/provisioning/datasources/sources.yaml
   notify: Restart grafana
 
 - name: Copy grafana provisioning dashboards
   ansible.builtin.template:
     src: boards.yaml.j2
-    dest: /etc/grafana/provisioning/dashboards/sample.yaml 
+    dest: /opt/grafana/provisioning/dashboards/sample.yaml 
   notify: Restart grafana
-
-- name: Create grafana dashboards directory
-  file:
-    path: /var/lib/grafana/dashboards
-    state: directory
 
 - name: Copy main.json to dashboards
   ansible.builtin.copy:
-    src: ../files/{{ item }}.json
-    dest: /var/lib/grafana/dashboards/{{ item }}.json
+    src: "{{ item }}.json"
+    dest: "/opt/grafana/provisioning/dashboards/{{ item }}.json"
   loop:
       - main
       - telegraf
@@ -48,8 +37,11 @@
       - mysql
   notify: Restart grafana
 
-- name: Ensure grafana is enable and running
-  systemd:
-    name: grafana-server
-    enabled: yes
+- name: Create a grafana container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana
+    published_ports: "{{ grafana_port }}:3000"
     state: started
+    restart_policy: always
+    volumes: /opt/grafana:/etc/grafana

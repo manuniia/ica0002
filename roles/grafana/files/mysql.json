@@ -18,6 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
+    "id": 3,
     "links": [],
     "panels": [
       {
@@ -65,7 +66,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "11.3.0+security-01",
+        "pluginVersion": "11.3.1",
         "targets": [
           {
             "datasource": {
@@ -84,7 +85,7 @@
             "useBackend": false
           }
         ],
-        "title": "MySQL 1",
+        "title": "MySQL 1 id",
         "type": "gauge"
       },
       {
@@ -132,7 +133,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "11.3.0+security-01",
+        "pluginVersion": "11.3.1",
         "targets": [
           {
             "datasource": {
@@ -151,7 +152,7 @@
             "useBackend": false
           }
         ],
-        "title": "MySQL 2",
+        "title": "MySQL 2 id",
         "type": "gauge"
       },
       {
@@ -164,7 +165,21 @@
             "color": {
               "mode": "thresholds"
             },
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 0,
+                    "text": "write read"
+                  },
+                  "1": {
+                    "index": 1,
+                    "text": "read only"
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -178,8 +193,8 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 5,
-          "w": 6,
+          "h": 6,
+          "w": 12,
           "x": 0,
           "y": 5
         },
@@ -199,7 +214,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "11.3.0+security-01",
+        "pluginVersion": "11.3.1",
         "targets": [
           {
             "datasource": {
@@ -208,84 +223,17 @@
             },
             "disableTextWrap": false,
             "editorMode": "builder",
-            "expr": "mysql_global_variables_read_only{job=\"mysql\", instance=\"manuniia-1:9104\"}",
+            "expr": "mysql_global_variables_read_only{job=\"mysql\"}",
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
-            "legendFormat": "__auto",
+            "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A",
             "useBackend": false
           }
         ],
-        "title": "Read only",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 6,
-          "y": 5
-        },
-        "id": 4,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "11.3.0+security-01",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
-            "disableTextWrap": false,
-            "editorMode": "builder",
-            "expr": "mysql_global_variables_read_only{job=\"mysql\", instance=\"manuniia-2:9104\"}",
-            "fullMetaSearch": false,
-            "includeNullMetadata": true,
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "A",
-            "useBackend": false
-          }
-        ],
-        "title": "Read only",
+        "title": "Read only status",
         "type": "gauge"
       },
       {
@@ -315,7 +263,7 @@
           "h": 5,
           "w": 6,
           "x": 0,
-          "y": 10
+          "y": 11
         },
         "id": 5,
         "options": {
@@ -333,7 +281,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "11.3.0+security-01",
+        "pluginVersion": "11.3.1",
         "targets": [
           {
             "datasource": {
@@ -346,7 +294,7 @@
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
-            "legendFormat": "__auto",
+            "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A",
             "useBackend": false
@@ -381,8 +329,8 @@
         "gridPos": {
           "h": 5,
           "w": 6,
-          "x": 0,
-          "y": 15
+          "x": 6,
+          "y": 11
         },
         "id": 6,
         "options": {
@@ -400,7 +348,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "11.3.0+security-01",
+        "pluginVersion": "11.3.1",
         "targets": [
           {
             "datasource": {
@@ -413,7 +361,7 @@
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
-            "legendFormat": "__auto",
+            "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A",
             "useBackend": false
@@ -424,7 +372,7 @@
       }
     ],
     "preload": false,
-    "refresh": "",
+    "refresh": "5s",
     "schemaVersion": 40,
     "tags": [],
     "templating": {
@@ -436,8 +384,8 @@
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "New dashboard",
-    "version": 0,
+    "title": "mysql",
+    "uid": "de50ky11sa3gga",
+    "version": 1,
     "weekStart": ""
   }
-  

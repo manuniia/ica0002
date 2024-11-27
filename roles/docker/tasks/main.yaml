@@ -1,0 +1,14 @@
+- name: Install docker
+  ansible.builtin.apt:
+    name:
+      - docker.io
+      - python3-docker
+    state: present
+
+- name: Ensure docker is enable and running
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+
+    
