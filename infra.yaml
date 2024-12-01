@@ -69,3 +69,18 @@
     - influxdb
   tags: 
     - i
+
+- name: keepalived
+  gather_facts: true
+  hosts: keepalived
+  roles:
+    - keepalived
+  tags: 
+    - k
+
+- name: haproxy
+  hosts: haproxy
+  roles:
+    - haproxy
+  tags: 
+    - h

@@ -61,8 +61,8 @@ Ansible Git Repository backups are verified every week by checking the mirror fo
 Service is recovered from the backup in case of an incident, and when service cannot be restored in any other way.
 
 RTO (recovery time objective) is:
- - 1 hour for MySQL
- - 1 hour for InfluxDB
- - 30 mins for Ansible Git Repository
+ - 2 hours for MySQL
+ - 2 hours for InfluxDB
+ - 1 hour for Ansible Git Repository
 
 Detailed backup restore procedure is documented in the [backup_restore.md](./backup_restore.md).

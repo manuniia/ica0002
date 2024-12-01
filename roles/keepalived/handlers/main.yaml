@@ -1,0 +1,9 @@
+- name: Restart keepalived
+  systemd:
+    name: keepalived
+    state: restarted
+
+- name: Restart keepalived-stats-exporter
+  systemd:
+    name: prometheus-keepalived-stats-exporter
+    state: restarted

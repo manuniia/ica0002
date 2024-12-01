@@ -72,3 +72,18 @@ scrape_configs:
     static_configs:
         - targets: 
           - backup:9111
+
+  - job_name: haproxy
+    static_configs:
+      - targets: 
+{% for n in groups['haproxy'] %}
+        - {{ n }}:9101
+{% endfor %}
+
+  - job_name: keepalived
+    static_configs:
+      - targets: 
+{% for n in groups['keepalived'] %}
+        - {{ n }}:9165
+{% endfor %}
+

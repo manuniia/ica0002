@@ -20,10 +20,11 @@
 
 - name: Create agama container
   community.docker.docker_container:
-    name: agama
+    name: "agama{{ item }}"
     image: agama
-    published_ports: "{{ agama_port }}:8000"
+    published_ports: "800{{ item }}:8000"
     env: 
       AGAMA_DATABASE_URI: "mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}"
     state: started
     restart_policy: always
+  with_sequence: "start=1 end={{ container_num }}"

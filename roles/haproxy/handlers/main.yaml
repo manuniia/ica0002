@@ -1,0 +1,9 @@
+- name: Restart haproxy
+  systemd:
+   name: haproxy
+   state: restarted
+
+- name: Restart prometheus-haproxy-exporter
+  systemd:
+   name: prometheus-haproxy-exporter
+   state: restarted

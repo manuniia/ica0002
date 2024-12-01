@@ -80,4 +80,9 @@ domain: slayble.ttu
 
 
 #agama
-agama_port: 8001
+container_num: 2
+
+# keepalived
+virtual_ipaddress: 192.168.100.63
+
+

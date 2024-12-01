@@ -1,0 +1,63 @@
+- name: Ensure /etc/keepalived directory is present
+  ansible.builtin.file:
+    path: /etc/keepalived
+    state: directory
+
+- name: create conf
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  notify: Restart keepalived
+
+- name: create script
+  ansible.builtin.template:
+    src: keepalived_script.j2
+    dest: /usr/bin/keepalived_script
+    mode: '0755'
+  notify: Restart keepalived
+
+- name: install Keepalived
+  ansible.builtin.apt:
+    name: keepalived
+    state: present
+
+- name: check if already downloaded keepalived
+  stat:
+    path: /usr/local/bin/keepalived-exporter
+  register: keepalived_downloaded
+
+- name: Download and install the keepalived stats Exporter
+  ansible.builtin.get_url:
+    url: https://github.com/mehdy/keepalived-exporter/releases/download/v1.3.2/keepalived-exporter-1.3.2.linux-386.tar.gz
+    dest: /tmp/keepalived-exporter-1.3.2.linux-386.tar.gz
+  when: not keepalived_downloaded.stat.exists
+
+- name: Unarchive a file that is already on the remote machine
+  ansible.builtin.unarchive:
+    src: /tmp/keepalived-exporter-1.3.2.linux-386.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+    creates: /usr/local/bin/keepalived-exporter
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create a directory for keepalived_stats_exporter
+  ansible.builtin.file:
+    path: /etc/keepalived_stats_exporter
+    state: directory
+
+- name: Create keepalived_stats_exporter service
+  ansible.builtin.template:
+    src: keepalived_stats_exporter.service.j2
+    dest: /etc/systemd/system/prometheus-keepalived-stats-exporter.service
+  notify: Restart keepalived-stats-exporter
+
+- name: Ensure keepalived and exporter are enable and running
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+      - keepalived
+      - prometheus-keepalived-stats-exporter
