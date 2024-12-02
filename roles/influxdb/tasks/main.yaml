@@ -76,7 +76,7 @@
 
 - name: Create cron file for influxdb
   ansible.builtin.template:
-    src: ../templates/influxdb-backup
+    src: influxdb-backup
     dest: /etc/cron.d/influxdb-backup
 
 

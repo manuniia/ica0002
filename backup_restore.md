@@ -10,7 +10,8 @@ Restore MySQL data from the backup:
     # to import the SQL data from the agama.sql file into the agama database on the MySQL server
     `mysql agama < /home/backup/mysql/agama.sql`
 
-Check the result of restore:
+Check the result of MySQL data restore:
+  Open http://193.40.156.67/students/manuniia.html for Public HA url on vm-1
     
 
 Restore Influxdb data from the backup:
@@ -24,3 +25,6 @@ Restore Influxdb data from the backup:
     `influx -execute 'DROP DATABASE telegraf`
     # to import the telegraf data into the influxdb database
     `influxd restore -portable -db telegraf /home/backup/restore/influxdb`
+
+Check the result of Influxdb data restore:
+  Open Grafana Telagraf dashboard to see restored results

@@ -1,44 +1,56 @@
 #!/bin/bash
 
-# Please help Dora to find problems in this script
+config_file="/etc/agama-client/agama-client.conf"
 
+# Check required commands
+which fping >/dev/null || { logger "$0: fping not found"; exit 1; }
+
+# Check for required configurations
 for t in database_url database_name subnet; do
-    if ! grep -q "^${t}=" /etc/agama-client/agama-client.conf; then
-        logger "$0 Failed to get $t from config"
+    if ! grep -q "^${t}=" "$config_file"; then
+        logger "$0: Failed to get $t from config"
         exit 1
     fi
 done
 
-which fping > /dev/null || { logger "$0 fping not found"; exit 1; }
+# Extract configurations
+db_url=$(grep "^database_url=" "$config_file" | cut -d'=' -f2-)
+db_name=$(grep "^database_name=" "$config_file" | cut -d'=' -f2-)
+subnet=$(grep "^subnet=" "$config_file" | cut -d'=' -f2-)
 
-db_url=$(grep "^database_url=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
-db_name=$(grep "^database_name=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
-subnet=$(grep "^subnet=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
+# Create database
+curl -i -X POST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" >/dev/null 2>&1 || {
+    logger "$0: Failed to create database"
+    exit 1
+}
 
-curl -i -XPOST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" 1>/dev/null 2>/dev/null || { logger "$0 Failed to create database"; exit 1; }
-
+# Infinite loop for scanning and updating
 while true; do
     for vm_ip in $(fping -g $subnet -a 2>/dev/null); do
-        # Getting content of agama page
-        content=$(curl --connect-timeout 1 -w "%{http_code}" -s $vm_ip)
-        if test ${content: -3} -ne 200; then
-            # nothing to do, going to next student
+        # Getting content of the agama page
+        content=$(curl --connect-timeout 1 -w "%{http_code}" -s "$vm_ip")
+        
+        # Check if HTTP status code is not 200
+        if [ "${content: -3}" != "200" ]; then
             continue
         fi
-        # Getting where it's hosted
+
+        # Extract VM name and count table rows
         vm_name=$(echo "$content" | grep "running on" | awk '{print $5}')
-        # Number of items in agama
         table_rows=$(echo "$content" | grep -c "</tr>")
-        # Write stats to inflixdb
-        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null
+
+        # Write stats to InfluxDB
+        curl -i -X POST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" >/dev/null 2>&1
+
         # If hostname exists in agama - delete it
-        if $(echo "$content" | grep -q $(hostname)); then
-            for delete_url in $(echo "$content" | grep $(hostname) | grep -o '/items/.*/swap-state' | sed 's/swap-state/delete/'); do
-                curl -s $vm_ip$delete_url -o /dev/null
+        if echo "$content" | grep -q "$(hostname)"; then
+            for delete_url in $(echo "$content" | grep "$(hostname)" | grep -o '/items/.*/swap-state' | sed 's/swap-state/delete/'); do
+                curl -s "$vm_ip$delete_url" -o /dev/null
             done
         fi
+
         # Add new item to agama
-        curl -s -XPOST $vm_ip/items/add -F new_item="Checked from $(hostname) at $(date)" -o /dev/null
+        curl -s -X POST "$vm_ip/items/add" -F "new_item=Checked from $(hostname) at $(date)" -o /dev/null
     done
-    sleep 300
+    sleep 300  # Wait for 5 minutes
 done

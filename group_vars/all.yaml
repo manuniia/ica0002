@@ -82,7 +82,14 @@ domain: slayble.ttu
 #agama
 container_num: 2
 
-# keepalived
-virtual_ipaddress: 192.168.100.63
-
-
+#keepalived
+virtual_ipaddress: >
+    {% set ip_parts = hostvars['manuniia-1']['ansible_default_ipv4']['address'].split('.') %}
+    {% set third_octet = ip_parts[2] | int %}
+    {% if third_octet == 42 %}
+        {{ ip_parts[0] }}.{{ ip_parts[1] }}.100.{{ ip_parts[3] }}/24
+    {% elif third_octet == 43 %}
+        {{ ip_parts[0] }}.{{ ip_parts[1] }}.101.{{ ip_parts[3] }}/24
+    {% else %}
+        {{ original_ip }}
+    {% endif %}
