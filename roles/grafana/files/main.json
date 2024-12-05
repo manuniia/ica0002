@@ -63,8 +63,8 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
+          "h": 3,
+          "w": 4,
           "x": 0,
           "y": 0
         },
@@ -86,7 +86,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -99,7 +99,7 @@
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
-            "legendFormat": "__auto",
+            "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A",
             "useBackend": false
@@ -150,9 +150,9 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 6,
+          "h": 3,
+          "w": 4,
+          "x": 4,
           "y": 0
         },
         "id": 2,
@@ -173,7 +173,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -237,9 +237,9 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 12,
+          "h": 3,
+          "w": 4,
+          "x": 8,
           "y": 0
         },
         "id": 3,
@@ -260,7 +260,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -325,9 +325,96 @@
         },
         "gridPos": {
           "h": 4,
-          "w": 6,
+          "w": 9,
+          "x": 12,
+          "y": 0
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "haproxy_server_up{job=\"haproxy\"}",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Haproxy containers status",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 1,
+                    "text": "down"
+                  },
+                  "1": {
+                    "index": 0,
+                    "text": "up"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
           "x": 0,
-          "y": 4
+          "y": 3
         },
         "id": 4,
         "options": {
@@ -347,7 +434,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -411,97 +498,10 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 6,
-          "y": 4
-        },
-        "id": 6,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "11.3.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "ce1nh3assipz4f"
-            },
-            "disableTextWrap": false,
-            "editorMode": "builder",
-            "expr": "haproxy_up{job=\"haproxy\"}",
-            "fullMetaSearch": false,
-            "includeNullMetadata": true,
-            "instant": false,
-            "legendFormat": "{{instance}}",
-            "range": true,
-            "refId": "A",
-            "useBackend": false
-          }
-        ],
-        "title": "Haproxy status",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [
-              {
-                "options": {
-                  "0": {
-                    "index": 1,
-                    "text": "down"
-                  },
-                  "1": {
-                    "index": 0,
-                    "text": "up"
-                  }
-                },
-                "type": "value"
-              }
-            ],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-red",
-                  "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 1
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 12,
-          "y": 4
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 3
         },
         "id": 8,
         "options": {
@@ -521,7 +521,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -585,10 +585,259 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
+          "h": 3,
+          "w": 4,
+          "x": 8,
+          "y": 3
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "haproxy_up{job=\"haproxy\"}",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Haproxy status",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 1,
+                    "text": "down"
+                  },
+                  "1": {
+                    "index": 0,
+                    "text": "up"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 5,
+          "x": 12,
+          "y": 4
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "keepalived_vrrp_state{job=\"keepalived\"}",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "keepalived_vrrp_state",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 0,
+                    "text": "down"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
           "x": 0,
-          "y": 8
+          "y": 6
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "bind_resolver_queries_total{job=\"bind9\"}",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Bind total requests",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 1,
+                    "text": "down"
+                  },
+                  "1": {
+                    "index": 0,
+                    "text": "up"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 9
         },
         "id": 5,
         "options": {
@@ -608,7 +857,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -659,12 +908,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "dark-red",
+                  "color": "purple",
                   "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 1
                 }
               ]
             }
@@ -672,12 +917,12 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 6,
-          "y": 8
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 9
         },
-        "id": 7,
+        "id": 12,
         "options": {
           "colorMode": "value",
           "graphMode": "area",
@@ -695,7 +940,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -704,9 +949,9 @@
             },
             "disableTextWrap": false,
             "editorMode": "builder",
-            "expr": "haproxy_server_up{job=\"haproxy\"}",
+            "expr": "sum by(__name__) (mysql_global_status_commands_total)",
             "fullMetaSearch": false,
-            "includeNullMetadata": true,
+            "includeNullMetadata": false,
             "instant": false,
             "legendFormat": "{{instance}}",
             "range": true,
@@ -714,7 +959,7 @@
             "useBackend": false
           }
         ],
-        "title": "Haproxy containervstatus",
+        "title": "Mysql total commands",
         "type": "stat"
       },
       {
@@ -746,12 +991,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "dark-red",
+                  "color": "purple",
                   "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 1
                 }
               ]
             }
@@ -759,12 +1000,12 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 6,
-          "x": 12,
-          "y": 8
+          "h": 3,
+          "w": 4,
+          "x": 8,
+          "y": 9
         },
-        "id": 9,
+        "id": 11,
         "options": {
           "colorMode": "value",
           "graphMode": "area",
@@ -782,7 +1023,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "11.3.1",
+        "pluginVersion": "11.3.2",
         "targets": [
           {
             "datasource": {
@@ -791,7 +1032,7 @@
             },
             "disableTextWrap": false,
             "editorMode": "builder",
-            "expr": "keepalived_vrrp_state{job=\"keepalived\"}",
+            "expr": "nginx_http_requests_total{job=\"nginx\"}",
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
@@ -801,7 +1042,143 @@
             "useBackend": false
           }
         ],
-        "title": "keepalived_vrrp_state",
+        "title": "Nginx total requests",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 0,
+          "y": 12
+        },
+        "id": 14,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes\n",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Memory Consumption",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 6,
+          "y": 12
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ce1nh3assipz4f"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)\n",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{instance}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "CPU utilisation",
         "type": "stat"
       }
     ],
@@ -823,3 +1200,4 @@
     "version": 1,
     "weekStart": ""
   }
+  

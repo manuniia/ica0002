@@ -1,7 +1,7 @@
 ansible_python_interpreter: python3
 
 #mysql
-mysql_host: "db-{{ groups['db_servers'][0].split('-')[1] }}"
+mysql_host: "{{ groups['db_servers'][0] }}"
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |

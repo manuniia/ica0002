@@ -25,8 +25,8 @@
 
 - name: Copy mysqld configuration
   ansible.builtin.template:
-    src: mysqld.cnf
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    src: override.cnf
+    dest: /etc/mysql/mysql.conf.d/override.cnf
   notify: Restart mysql    
 
 - name: Ensure MySQL and exporter are enable and running
