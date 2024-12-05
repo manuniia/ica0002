@@ -11,7 +11,6 @@
     dest: /etc/nginx/sites-enabled/default
   notify: 
       - Restart nginx
-      # - Restart prometheus-nginx-exporter
 
 - meta: flush_handlers
 

@@ -1,2 +1,2 @@
-ARGS=--haproxy.scrape-uri='http://manuniia-{{ inventory_hostname.split('-')[1] }}:9188/haproxy?stats;csv'
+ARGS=--haproxy.scrape-uri='http://lb-{{ inventory_hostname.split('-')[1] }}:9188/haproxy?stats;csv'
 

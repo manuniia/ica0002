@@ -21,8 +21,80 @@ options {
 statistics-channels {
   inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
 };
-
+{% if inventory_hostname in groups['dns_primary'] %}
 zone "{{ startup_name }}." {
     type primary;
     file "db.{{ startup_name }}";
+	allow-transfer {
+        127.0.0.1;
+		key transfer.key ;
+	};
+    allow-update {
+		key nsupdate.key ;
+	};
 };
+{% endif %}
+
+{% if inventory_hostname in groups['dns_secondary'] %}
+zone "{{ startup_name }}." {
+    type secondary;
+    file "db.{{ startup_name }}";
+    primaries { 
+{% for vm in groups['dns_primary'] %}
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
+{% endfor %}
+    };
+    allow-transfer {
+        127.0.0.1;
+	};
+};
+{% endif %}
+
+{% if inventory_hostname in groups['dns_primary'] %}
+zone "168.192.in-addr.arpa" {
+    type primary;
+    file "db.reverse.zone";
+	allow-transfer {
+        127.0.0.1;
+		key transfer.key ;
+	};
+    allow-update {
+		key nsupdate.key ;
+	};
+};
+{% endif %}
+
+{% if inventory_hostname in groups['dns_secondary'] %}
+zone "168.192.in-addr.arpa" {
+    type secondary;
+    file "db.reverse.zone";
+    primaries { 
+{% for vm in groups['dns_primary'] %}
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
+{% endfor %}
+    };
+    allow-transfer {
+        127.0.0.1;
+	};
+};
+{% endif %}
+
+
+{% if inventory_hostname in groups['dns_secondary'] %}
+{% for vm in groups['dns_primary'] %}
+server        {{ hostvars[vm]['ansible_default_ipv4']['address'] }}{
+    keys { transfer.key ;};
+};
+{% endfor %}
+{% endif %}
+
+key "transfer.key" {
+        algorithm hmac-sha256;
+        secret "{{ transfer_key_secret }}";
+};
+
+key "nsupdate.key" {
+        algorithm hmac-sha256;
+        secret "{{ nsupdate_key_secret }}";
+};
+

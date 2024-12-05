@@ -5,8 +5,10 @@
     - init
   tags:
     - init
+    # - always
 
 - name: DNS server
+  gather_facts: true
   hosts: dns_servers
   roles:
     - bind
@@ -14,11 +16,13 @@
     - b
 
 - name: Resolver
+  gather_facts: true
   hosts: all
   roles:
     - resolver
   tags: 
     - b
+    - r
 
 - name: Database server
   gather_facts: true
@@ -30,6 +34,7 @@
     - mx
 
 - name: Web server
+  gather_facts: true
   hosts: web_servers
   roles:
     - docker
@@ -47,6 +52,7 @@
     - c
 
 - name: prometheus
+  gather_facts: true
   hosts: prometheus
   roles:
     - prometheus
@@ -79,6 +85,7 @@
     - k
 
 - name: haproxy
+  gather_facts: true
   hosts: haproxy
   roles:
     - haproxy

@@ -39,8 +39,8 @@ frontend my_ha_frontend
 
 backend my_ha_backend
 {% for i in range(container_num) %}
-      server docker1{{ i + 1 }} manuniia-1:800{{ i + 1 }} check
-      server docker2{{ i + 1 }} manuniia-2:800{{ i + 1 }} check
+      server docker1{{ i + 1 }} lb-1:800{{ i + 1 }} check
+      server docker2{{ i + 1 }} lb-2:800{{ i + 1 }} check
 {% endfor %}
 
 listen stats

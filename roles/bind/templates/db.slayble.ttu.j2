@@ -15,10 +15,4 @@ $TTL	604800
 {{ vm }}	IN	A	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endfor %}
 
-backup 		IN	A  {{ backup_ip }}
 
-influxdb	IN	CNAME	{{ groups['influxdb'][0] }}
-prometheus	IN	CNAME	{{ groups['prometheus'][0] }}
-grafana		IN	CNAME	{{ groups['grafana'][0] }}
-telegraf	IN	CNAME	{{ groups['influxdb'][0] }}
-agama		IN	CNAME	{{ groups['web_servers'][0] }}

@@ -27,4 +27,4 @@ Restore Influxdb data from the backup:
     `influxd restore -portable -db telegraf /home/backup/restore/influxdb`
 
 Check the result of Influxdb data restore:
-  Open Grafana Telagraf dashboard to see restored results
+  Open Grafana Telagraf dashboard to see restored

@@ -1,2 +1,7 @@
-nameserver {{ hostvars['manuniia-2']['ansible_default_ipv4']['address'] }}
 search {{ startup_name }}
+{% for vm in groups['dns_primary'] %}
+nameserver	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+{% endfor %}
+{% for vm in groups['dns_secondary'] %}
+nameserver	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+{% endfor %}
