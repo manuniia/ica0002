@@ -10,7 +10,7 @@
 
 - name: Copy agama-client script 
   ansible.builtin.template:
-    src: ../templates/agama-client
+    src: agama-client
     dest: /usr/local/bin/agama-client
     mode: '0755'
 

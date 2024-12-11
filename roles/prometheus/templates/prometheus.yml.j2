@@ -37,7 +37,7 @@ scrape_configs:
       - targets:
         - ns-1:9100
         - ns-2:9100
-
+        - ns-3:9100
 
   - job_name: mysql
     static_configs:
@@ -50,12 +50,12 @@ scrape_configs:
       - targets: 
         - ns-1:9119
         - ns-2:9119
+        - ns-3:9100
 
   - job_name: nginx
     static_configs:
       - targets: 
-        - www-1:9113
-        - www-2:9113
+        - www-3:9113
 
   - job_name: influxdb
     static_configs:

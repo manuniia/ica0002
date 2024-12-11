@@ -1,15 +1,18 @@
-manuniia-1 ansible_host=193.40.156.67 ansible_port=19322 ansible_user=ubuntu
-manuniia-2 ansible_host=193.40.156.67 ansible_port=11422 ansible_user=ubuntu
+manuniia-1 ansible_host=193.40.156.67 ansible_port=9022 ansible_user=ubuntu
+manuniia-2 ansible_host=193.40.156.67 ansible_port=13822 ansible_user=ubuntu
+manuniia-3 ansible_host=193.40.156.67 ansible_port=5222 ansible_user=ubuntu
 
 [dns_servers]
+manuniia-3
 manuniia-2
 manuniia-1
 
 [dns_primary]
-manuniia-2
+manuniia-3
 
 [dns_secondary]
 manuniia-1
+manuniia-2
 
 [dns_servers:children]
 dns_primary
@@ -22,18 +25,19 @@ manuniia-2
 [web_servers]
 manuniia-1
 manuniia-2
+manuniia-3
 
 [agama_client_servers]
-manuniia-1
+manuniia-3
 
 [prometheus]
-manuniia-2
+manuniia-3
 
 [grafana]
-manuniia-2
+manuniia-3
 
 [influxdb]
-manuniia-1
+manuniia-3
 
 [keepalived]
 manuniia-1

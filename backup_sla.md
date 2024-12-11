@@ -24,9 +24,9 @@ Ansible Git Repository backups are created every day; it takes up to 20 mins to 
 All backups are started automatically by cron jobs managed through Ansible.
 
 Backup RPO (recovery point objective) is:
- - 8 hours for MySQL
- - 8 hours for InfluxDB
- - 2 hours for Ansible Git Repository
+ - 12 hours for MySQL
+ - 12 hours for InfluxDB
+ - 24 hours for Ansible Git Repository
 
 
 ## Storage

@@ -1,7 +1,13 @@
+- name: check if already installed influxdb
+  stat:
+    path: /usr/bin/influxd
+  register: influxdb_installed
+
 - name: download influxdb
   ansible.builtin.get_url:
     url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
     dest: /tmp/influxdb_1.8.10_amd64.deb
+  when: not influxdb_installed.stat.exists
 
 - name: add InfluxDB repository key
   ansible.builtin.apt_key:
@@ -15,6 +21,7 @@
   ansible.builtin.apt:
     deb: /tmp/influxdb_1.8.10_amd64.deb
     state: present
+  when: not influxdb_installed.stat.exists
 
 - name: Change influxdb conf file
   ansible.builtin.template:

@@ -3,13 +3,6 @@ server {
     listen 80 default_server;
         server_name _;
 
-{% if inventory_hostname in groups['web_servers'] %}
-	location / {
-		proxy_pass http://www-{{ inventory_hostname.split('-')[1] }}:8001;
-		proxy_set_header Host $http_host;
-	}
-{% endif %}
-
 {% if inventory_hostname in groups['prometheus'] %}
 	location /prometheus {
 		proxy_pass http://prometheus:9090/prometheus;

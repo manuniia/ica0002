@@ -39,7 +39,6 @@
   roles:
     - docker
     - agama
-    - nginx
   tags: 
     - w
     - mx
@@ -56,7 +55,7 @@
   hosts: prometheus
   roles:
     - prometheus
-    - nginx
+    # - nginx
   tags: 
     - p
 
@@ -71,6 +70,7 @@
     - g
 
 - name: influxdb
+  gather_facts: true
   hosts: influxdb
   roles:
     - influxdb

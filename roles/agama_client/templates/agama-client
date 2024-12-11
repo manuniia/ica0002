@@ -9,6 +9,8 @@ for t in database_url database_name subnet; do
     fi
 done
 
+sleep 30
+
 which fping > /dev/null || { logger "$0 fping not found"; exit 1; }
 
 logger "Starting agama-client..."
@@ -51,7 +53,7 @@ while true; do
         # Number of items in agama
         table_rows=$(echo "$content" | grep -c "</tr>")
         # Write stats to inflixdb
-        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null
+        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null || logger "Failed to write to Influxdb"
         # If hostname exists in agama - delete it
         if $(echo "$content" | grep -q $(hostname)); then
             for delete_url in $(echo "$content" | grep $(hostname) | grep -o '/items/.*/swap-state' | sed 's/swap-state/delete/'); do
