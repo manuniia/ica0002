@@ -9,7 +9,7 @@ for t in database_url database_name subnet; do
     fi
 done
 
-sleep 30
+sleep 40
 
 which fping > /dev/null || { logger "$0 fping not found"; exit 1; }
 
@@ -27,7 +27,7 @@ else
 fi
 
 logger "Creating database $db_name in $db_url"
-curl -i -XPOST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" 1>/dev/null 2>/dev/null || { logger "$0 Failed to create database"; exit 1; }
+curl -i -XPOST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" 1>/dev/null 2>/dev/null || { logger "$0 Failed to create database"; exit 1; } 
 
 while true; do
     alive_hosts=$(fping -g $subnet -a 2>/dev/null || true)
@@ -53,7 +53,7 @@ while true; do
         # Number of items in agama
         table_rows=$(echo "$content" | grep -c "</tr>")
         # Write stats to inflixdb
-        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null || logger "Failed to write to Influxdb"
+        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null || logger "Failed to write to Influxdb" || logger "Failed to connect to http://influxdb:8086"
         # If hostname exists in agama - delete it
         if $(echo "$content" | grep -q $(hostname)); then
             for delete_url in $(echo "$content" | grep $(hostname) | grep -o '/items/.*/swap-state' | sed 's/swap-state/delete/'); do
