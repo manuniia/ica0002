@@ -1,4 +1,4 @@
-Thu Dec 12 21:58:56 EET 2024
+Sat Dec 14 16:10:51 EET 2024
 + hostname
 manunias-Laptop.local
 + ansible-playbook infra.yaml --diff
@@ -12,8 +12,8 @@ ok: [manuniia-3]
 
 TASK [init : Update APT cache] *************************************************
 changed: [manuniia-1]
-changed: [manuniia-2]
 changed: [manuniia-3]
+changed: [manuniia-2]
 
 TASK [init : Install dnspython library] ****************************************
 The following additional packages will be installed:
@@ -61,6 +61,26 @@ The following NEW packages will be installed:
   node-jquery prometheus prometheus-node-exporter
   prometheus-node-exporter-collectors smartmontools
 0 upgraded, 24 newly installed, 0 to remove and 132 not upgraded.
+changed: [manuniia-1]
+The following additional packages will be installed:
+  fonts-glyphicons-halflings javascript-common libio-pty-perl libipc-run-perl
+  libjs-bootstrap libjs-bootstrap4 libjs-d3
+  libjs-eonasdan-bootstrap-datetimepicker libjs-jquery libjs-jquery-hotkeys
+  libjs-moment libjs-moment-timezone libjs-mustache libjs-popper.js
+  libjs-rickshaw libjs-sizzle libtime-duration-perl libtimedate-perl moreutils
+  node-jquery prometheus-node-exporter prometheus-node-exporter-collectors
+  smartmontools
+Suggested packages:
+  apache2 | lighttpd | httpd gsmartcontrol smart-notifier mailx | mailutils
+The following NEW packages will be installed:
+  fonts-glyphicons-halflings javascript-common libio-pty-perl libipc-run-perl
+  libjs-bootstrap libjs-bootstrap4 libjs-d3
+  libjs-eonasdan-bootstrap-datetimepicker libjs-jquery libjs-jquery-hotkeys
+  libjs-moment libjs-moment-timezone libjs-mustache libjs-popper.js
+  libjs-rickshaw libjs-sizzle libtime-duration-perl libtimedate-perl moreutils
+  node-jquery prometheus prometheus-node-exporter
+  prometheus-node-exporter-collectors smartmontools
+0 upgraded, 24 newly installed, 0 to remove and 132 not upgraded.
 changed: [manuniia-3]
 The following additional packages will be installed:
   fonts-glyphicons-halflings javascript-common libio-pty-perl libipc-run-perl
@@ -82,26 +102,6 @@ The following NEW packages will be installed:
   prometheus-node-exporter-collectors smartmontools
 0 upgraded, 24 newly installed, 0 to remove and 132 not upgraded.
 changed: [manuniia-2]
-The following additional packages will be installed:
-  fonts-glyphicons-halflings javascript-common libio-pty-perl libipc-run-perl
-  libjs-bootstrap libjs-bootstrap4 libjs-d3
-  libjs-eonasdan-bootstrap-datetimepicker libjs-jquery libjs-jquery-hotkeys
-  libjs-moment libjs-moment-timezone libjs-mustache libjs-popper.js
-  libjs-rickshaw libjs-sizzle libtime-duration-perl libtimedate-perl moreutils
-  node-jquery prometheus-node-exporter prometheus-node-exporter-collectors
-  smartmontools
-Suggested packages:
-  apache2 | lighttpd | httpd gsmartcontrol smart-notifier mailx | mailutils
-The following NEW packages will be installed:
-  fonts-glyphicons-halflings javascript-common libio-pty-perl libipc-run-perl
-  libjs-bootstrap libjs-bootstrap4 libjs-d3
-  libjs-eonasdan-bootstrap-datetimepicker libjs-jquery libjs-jquery-hotkeys
-  libjs-moment libjs-moment-timezone libjs-mustache libjs-popper.js
-  libjs-rickshaw libjs-sizzle libtime-duration-perl libtimedate-perl moreutils
-  node-jquery prometheus prometheus-node-exporter
-  prometheus-node-exporter-collectors smartmontools
-0 upgraded, 24 newly installed, 0 to remove and 132 not upgraded.
-changed: [manuniia-1]
 
 TASK [init : install rsyslog] **************************************************
 ok: [manuniia-1]
@@ -110,7 +110,7 @@ ok: [manuniia-3]
 
 TASK [init : Copy rsyslog conf for telegraf] ***********************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp7mjp6ygj/50-telegraf.conf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpvmztojwg/50-telegraf.conf
 @@ -0,0 +1,10 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -125,7 +125,7 @@ TASK [init : Copy rsyslog conf for telegraf] ***********************************
 
 changed: [manuniia-2]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpdlscctwr/50-telegraf.conf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpcomyvkxr/50-telegraf.conf
 @@ -0,0 +1,10 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -140,7 +140,7 @@ changed: [manuniia-2]
 
 changed: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp65zqzsar/50-telegraf.conf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp_kdaclp4/50-telegraf.conf
 @@ -0,0 +1,10 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -183,7 +183,7 @@ changed: [manuniia-3]
 +    "state": "directory"
  }
 
-changed: [manuniia-2]
+changed: [manuniia-1]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -197,24 +197,16 @@ changed: [manuniia-2]
 +    "state": "directory"
  }
 
-changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [init : Create a user backup] *********************************************
+changed: [manuniia-3]
 changed: [manuniia-1]
 changed: [manuniia-2]
-changed: [manuniia-3]
 
 TASK [init : Add backup server SSH key to the list of known hosts] *************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpyvfdnmxt/known_hosts.j2
-@@ -0,0 +1,3 @@
-+192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-+backup.slayble.ttu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-
-changed: [manuniia-2]
---- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpvq9i8_8n/known_hosts.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmplyzxzaa0/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
@@ -222,13 +214,21 @@ changed: [manuniia-2]
 
 changed: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpu7ouye7y/known_hosts.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmplec2ssxi/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup.slayble.ttu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 
 changed: [manuniia-3]
+--- before
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpim8m3dae/known_hosts.j2
+@@ -0,0 +1,3 @@
++192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup.slayble.ttu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
+
+changed: [manuniia-2]
 
 TASK [init : Create /home/backup/restore directory] ****************************
 --- before
@@ -258,7 +258,7 @@ changed: [manuniia-2]
 +    "state": "directory"
  }
 
-changed: [manuniia-1]
+changed: [manuniia-3]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -272,7 +272,7 @@ changed: [manuniia-1]
 +    "state": "directory"
  }
 
-changed: [manuniia-3]
+changed: [manuniia-1]
 
 TASK [init : install duplicity] ************************************************
 The following additional packages will be installed:
@@ -286,18 +286,6 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-fasteners python3-future python3-lockfile
   python3-monotonic python3-nacl python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 132 not upgraded.
-changed: [manuniia-3]
-The following additional packages will be installed:
-  librsync2 python3-fasteners python3-future python3-lockfile
-  python3-monotonic python3-nacl python3-paramiko
-Suggested packages:
-  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
-  python-future-doc python-lockfile-doc python-nacl-doc python3-gssapi
-  python3-invoke
-The following NEW packages will be installed:
-  duplicity librsync2 python3-fasteners python3-future python3-lockfile
-  python3-monotonic python3-nacl python3-paramiko
-0 upgraded, 8 newly installed, 0 to remove and 132 not upgraded.
 changed: [manuniia-2]
 The following additional packages will be installed:
   librsync2 python3-fasteners python3-future python3-lockfile
@@ -311,18 +299,30 @@ The following NEW packages will be installed:
   python3-monotonic python3-nacl python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 132 not upgraded.
 changed: [manuniia-1]
+The following additional packages will be installed:
+  librsync2 python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-nacl python3-paramiko
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python-nacl-doc python3-gssapi
+  python3-invoke
+The following NEW packages will be installed:
+  duplicity librsync2 python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-nacl python3-paramiko
+0 upgraded, 8 newly installed, 0 to remove and 132 not upgraded.
+changed: [manuniia-3]
 
 RUNNING HANDLER [init : Restart rsyslog] ***************************************
 changed: [manuniia-2]
-changed: [manuniia-1]
 changed: [manuniia-3]
+changed: [manuniia-1]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
 ok: [manuniia-3]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [bind : Install bind] *****************************************************
 The following additional packages will be installed:
@@ -334,7 +334,7 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-host bind9-libs
 3 upgraded, 3 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-3]
+changed: [manuniia-1]
 The following additional packages will be installed:
   bind9-dnsutils bind9-host bind9-libs bind9-utils dns-root-data
 Suggested packages:
@@ -344,7 +344,7 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-host bind9-libs
 3 upgraded, 3 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-1]
+changed: [manuniia-3]
 The following additional packages will be installed:
   bind9-dnsutils bind9-host bind9-libs bind9-utils dns-root-data
 Suggested packages:
@@ -358,17 +358,17 @@ changed: [manuniia-2]
 
 TASK [bind : Copy bind9 configuration] *****************************************
 changed: [manuniia-2] => (item=None)
-changed: [manuniia-1] => (item=None)
 changed: [manuniia-3] => (item=None)
 changed: [manuniia-2]
-changed: [manuniia-1]
 changed: [manuniia-3]
+changed: [manuniia-1] => (item=None)
+changed: [manuniia-1]
 
 TASK [bind : Configure dns zone] ***********************************************
 skipping: [manuniia-2]
 skipping: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpry7kej2d/db.slayble.ttu.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpsthbw5cv/db.slayble.ttu.j2
 @@ -0,0 +1,18 @@
 +$TTL	604800
 +slayble.ttu.	IN	SOA	ns.slayble.ttu. mail.slayble.ttu. (
@@ -383,9 +383,9 @@ skipping: [manuniia-1]
 +slayble.ttu.	IN	NS	manuniia-2
 +slayble.ttu.	IN	NS	manuniia-1
 +
-+manuniia-3	IN	A	192.168.43.174
-+manuniia-2	IN	A	192.168.43.195
-+manuniia-1	IN	A	192.168.43.147
++manuniia-3	IN	A	192.168.43.65
++manuniia-2	IN	A	192.168.43.142
++manuniia-1	IN	A	192.168.43.131
 +
 +
 
@@ -393,7 +393,7 @@ changed: [manuniia-3]
 
 TASK [bind : Configure dns reverse zone] ***************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpomhlcwue/db.reverse.zone.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpkvlcfyzn/db.reverse.zone.j2
 @@ -0,0 +1,16 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	SOA	ns.slayble.ttu. mail.slayble.ttu. (
@@ -408,34 +408,13 @@ TASK [bind : Configure dns reverse zone] ***************************************
 +168.192.in-addr.arpa.	IN	NS	manuniia-2.slayble.ttu.
 +168.192.in-addr.arpa.	IN	NS	manuniia-1.slayble.ttu.
 +
-+174.43  IN  PTR  manuniia-3.slayble.ttu.
-+195.43  IN  PTR  manuniia-2.slayble.ttu.
-+147.43  IN  PTR  manuniia-1.slayble.ttu.
-
-changed: [manuniia-3]
---- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp005cgovq/db.reverse.zone.j2
-@@ -0,0 +1,16 @@
-+$TTL	604800
-+168.192.in-addr.arpa.	SOA	ns.slayble.ttu. mail.slayble.ttu. (
-+			      2		; Serial
-+			 604800		; Refresh
-+			  86400		; Retry
-+			2419200		; Expire
-+			 604800 )	; Negative Cache TTL
-+;
-+
-+168.192.in-addr.arpa.	IN	NS	manuniia-3.slayble.ttu.
-+168.192.in-addr.arpa.	IN	NS	manuniia-2.slayble.ttu.
-+168.192.in-addr.arpa.	IN	NS	manuniia-1.slayble.ttu.
-+
-+174.43  IN  PTR  manuniia-3.slayble.ttu.
-+195.43  IN  PTR  manuniia-2.slayble.ttu.
-+147.43  IN  PTR  manuniia-1.slayble.ttu.
++65.43  IN  PTR  manuniia-3.slayble.ttu.
++142.43  IN  PTR  manuniia-2.slayble.ttu.
++131.43  IN  PTR  manuniia-1.slayble.ttu.
 
 changed: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp0790l9m2/db.reverse.zone.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpilb8bweg/db.reverse.zone.j2
 @@ -0,0 +1,16 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	SOA	ns.slayble.ttu. mail.slayble.ttu. (
@@ -450,25 +429,46 @@ changed: [manuniia-1]
 +168.192.in-addr.arpa.	IN	NS	manuniia-2.slayble.ttu.
 +168.192.in-addr.arpa.	IN	NS	manuniia-1.slayble.ttu.
 +
-+174.43  IN  PTR  manuniia-3.slayble.ttu.
-+195.43  IN  PTR  manuniia-2.slayble.ttu.
-+147.43  IN  PTR  manuniia-1.slayble.ttu.
++65.43  IN  PTR  manuniia-3.slayble.ttu.
++142.43  IN  PTR  manuniia-2.slayble.ttu.
++131.43  IN  PTR  manuniia-1.slayble.ttu.
+
+changed: [manuniia-3]
+--- before
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp14_4hgmx/db.reverse.zone.j2
+@@ -0,0 +1,16 @@
++$TTL	604800
++168.192.in-addr.arpa.	SOA	ns.slayble.ttu. mail.slayble.ttu. (
++			      2		; Serial
++			 604800		; Refresh
++			  86400		; Retry
++			2419200		; Expire
++			 604800 )	; Negative Cache TTL
++;
++
++168.192.in-addr.arpa.	IN	NS	manuniia-3.slayble.ttu.
++168.192.in-addr.arpa.	IN	NS	manuniia-2.slayble.ttu.
++168.192.in-addr.arpa.	IN	NS	manuniia-1.slayble.ttu.
++
++65.43  IN  PTR  manuniia-3.slayble.ttu.
++142.43  IN  PTR  manuniia-2.slayble.ttu.
++131.43  IN  PTR  manuniia-1.slayble.ttu.
 
 changed: [manuniia-2]
 
 TASK [bind : Extract bind_exporter-0.6.1 into /usr/local/bin/] *****************
-changed: [manuniia-1]
-changed: [manuniia-2]
 changed: [manuniia-3]
+changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [bind : Copy file with owner and permissions] *****************************
-changed: [manuniia-1]
 changed: [manuniia-2]
 changed: [manuniia-3]
+changed: [manuniia-1]
 
 TASK [bind : Configure bind9-exporter] *****************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp7ek0k9yt/prometheus-bind9-exporter.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmphgcb29bc/prometheus-bind9-exporter.j2
 @@ -0,0 +1,14 @@
 +[Unit]
 +Description=Prometheus exporter for Bind
@@ -487,7 +487,7 @@ TASK [bind : Configure bind9-exporter] *****************************************
 
 changed: [manuniia-3]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmplx50iddw/prometheus-bind9-exporter.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp1iwktc1o/prometheus-bind9-exporter.j2
 @@ -0,0 +1,14 @@
 +[Unit]
 +Description=Prometheus exporter for Bind
@@ -506,7 +506,7 @@ changed: [manuniia-3]
 
 changed: [manuniia-2]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpqt6xcnrq/prometheus-bind9-exporter.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpn3q955sb/prometheus-bind9-exporter.j2
 @@ -0,0 +1,14 @@
 +[Unit]
 +Description=Prometheus exporter for Bind
@@ -526,12 +526,12 @@ changed: [manuniia-2]
 changed: [manuniia-1]
 
 TASK [bind : Ensure bind9 and exporter are enable and running] *****************
-ok: [manuniia-2] => (item=bind9)
 ok: [manuniia-1] => (item=bind9)
+ok: [manuniia-2] => (item=bind9)
 ok: [manuniia-3] => (item=bind9)
-changed: [manuniia-2] => (item=prometheus-bind9-exporter)
 changed: [manuniia-1] => (item=prometheus-bind9-exporter)
 changed: [manuniia-3] => (item=prometheus-bind9-exporter)
+changed: [manuniia-2] => (item=prometheus-bind9-exporter)
 
 TASK [bind : meta] *************************************************************
 
@@ -540,14 +540,14 @@ TASK [bind : meta] *************************************************************
 TASK [bind : meta] *************************************************************
 
 RUNNING HANDLER [bind : Restart bind9] *****************************************
-changed: [manuniia-3]
 changed: [manuniia-2]
 changed: [manuniia-1]
+changed: [manuniia-3]
 
 RUNNING HANDLER [bind : daemon-reload] *****************************************
+ok: [manuniia-1]
 ok: [manuniia-2]
 ok: [manuniia-3]
-ok: [manuniia-1]
 
 TASK [bind : Create records for backup] ****************************************
 skipping: [manuniia-2]
@@ -555,8 +555,8 @@ skipping: [manuniia-1]
 changed: [manuniia-3]
 
 TASK [bind : Create CNAME for bind] ********************************************
-changed: [manuniia-2]
 changed: [manuniia-3]
+changed: [manuniia-2]
 changed: [manuniia-1]
 
 PLAY [Resolver] ****************************************************************
@@ -568,7 +568,7 @@ ok: [manuniia-3]
 
 TASK [resolver : Copy resolver configuration] **********************************
 --- before: /etc/resolv.conf
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp33zucwpz/resolv.conf.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpp_8hhuoe/resolv.conf.j2
 @@ -1,23 +1,3 @@
 -# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
 -# Do not edit.
@@ -594,12 +594,43 @@ TASK [resolver : Copy resolver configuration] **********************************
 -options edns0 trust-ad
 -search openstacklocal
 +search slayble.ttu
-+nameserver	192.168.43.147
-+nameserver	192.168.43.195
++nameserver	192.168.43.131
++nameserver	192.168.43.142
+
+changed: [manuniia-1]
+--- before: /etc/resolv.conf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpz7d5mioc/resolv.conf.j2
+@@ -1,23 +1,3 @@
+-# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+-# Do not edit.
+-#
+-# This file might be symlinked as /etc/resolv.conf. If you're looking at
+-# /etc/resolv.conf and seeing this text, you have followed the symlink.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs should typically not access this file directly, but only
+-# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+-# different way, replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search openstacklocal
++search slayble.ttu
++nameserver	192.168.43.131
++nameserver	192.168.43.142
 
 changed: [manuniia-3]
 --- before: /etc/resolv.conf
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmps184075x/resolv.conf.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp0hnre3qe/resolv.conf.j2
 @@ -1,23 +1,3 @@
 -# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
 -# Do not edit.
@@ -625,51 +656,20 @@ changed: [manuniia-3]
 -options edns0 trust-ad
 -search openstacklocal
 +search slayble.ttu
-+nameserver	192.168.43.147
-+nameserver	192.168.43.195
++nameserver	192.168.43.131
++nameserver	192.168.43.142
 
 changed: [manuniia-2]
---- before: /etc/resolv.conf
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpsqvi2klp/resolv.conf.j2
-@@ -1,23 +1,3 @@
--# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
--# Do not edit.
--#
--# This file might be symlinked as /etc/resolv.conf. If you're looking at
--# /etc/resolv.conf and seeing this text, you have followed the symlink.
--#
--# This is a dynamic resolv.conf file for connecting local clients to the
--# internal DNS stub resolver of systemd-resolved. This file lists all
--# configured search domains.
--#
--# Run "resolvectl status" to see details about the uplink DNS servers
--# currently in use.
--#
--# Third party programs should typically not access this file directly, but only
--# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
--# different way, replace this symlink by a static file or a different symlink.
--#
--# See man:systemd-resolved.service(8) for details about the supported modes of
--# operation for /etc/resolv.conf.
--
--nameserver 127.0.0.53
--options edns0 trust-ad
--search openstacklocal
-+search slayble.ttu
-+nameserver	192.168.43.147
-+nameserver	192.168.43.195
-
-changed: [manuniia-1]
 
 PLAY [Database server] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : create my.cnf file for prometheus] *******************************
-changed: [manuniia-2]
 changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [mysql : create my.cnf file for backup] ***********************************
 changed: [manuniia-2]
@@ -697,7 +697,7 @@ The following NEW packages will be installed:
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   prometheus-mysqld-exporter python3-pymysql
 0 upgraded, 29 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-2]
+changed: [manuniia-1]
 The following additional packages will be installed:
   libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
   libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl libfcgi0ldbl
@@ -719,11 +719,11 @@ The following NEW packages will be installed:
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   prometheus-mysqld-exporter python3-pymysql
 0 upgraded, 29 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [mysql : Copy mysqld configuration] ***************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp79cafbm4/override.cnf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpeip91fbj/override.cnf
 @@ -0,0 +1,8 @@
 +[mysqld]
 +bind-address = 0.0.0.0
@@ -731,12 +731,12 @@ TASK [mysql : Copy mysqld configuration] ***************************************
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 451
++server-id = 398
 +
 
 changed: [manuniia-2]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp_ft7q338/override.cnf
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpzv08mv9t/override.cnf
 @@ -0,0 +1,8 @@
 +[mysqld]
 +bind-address = 0.0.0.0
@@ -744,7 +744,7 @@ changed: [manuniia-2]
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 403
++server-id = 387
 +
 
 changed: [manuniia-1]
@@ -756,16 +756,16 @@ ok: [manuniia-1] => (item=prometheus-mysqld-exporter)
 ok: [manuniia-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : MySQL database] **************************************************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [mysql : MySQL user] ******************************************************
-changed: [manuniia-2]
 changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [mysql : MySQL exporter user] *********************************************
-changed: [manuniia-2]
 changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [mysql : Create /home/backup/mysql directory] *****************************
 --- before
@@ -781,7 +781,7 @@ TASK [mysql : Create /home/backup/mysql directory] *****************************
 +    "state": "directory"
  }
 
-changed: [manuniia-1]
+changed: [manuniia-2]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -795,7 +795,7 @@ changed: [manuniia-1]
 +    "state": "directory"
  }
 
-changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [mysql : MySQL backup user] ***********************************************
 changed: [manuniia-2]
@@ -803,13 +803,13 @@ changed: [manuniia-1]
 
 TASK [mysql : Create cron file for mysql] **************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp5ymumby1/mysql-backup
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpp00zw_ma/mysql-backup
 @@ -0,0 +1 @@
 +
 
 changed: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpr8crrapu/mysql-backup
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmphq96mk1x/mysql-backup
 @@ -0,0 +1,3 @@
 +10 11,23 * * *  backup  mysqldump agama > /home/backup/mysql/agama.sql
 +
@@ -818,24 +818,24 @@ changed: [manuniia-1]
 changed: [manuniia-2]
 
 TASK [mysql : MySQL replication user] ******************************************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [mysql : Read only mode for replica server] *******************************
 changed: [manuniia-1]
 changed: [manuniia-2]
 
 TASK [mysql : Create CNAME for mysql] ******************************************
-changed: [manuniia-2]
 changed: [manuniia-1]
+changed: [manuniia-2]
 
 RUNNING HANDLER [mysql : Restart mysql] ****************************************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 RUNNING HANDLER [mysql : Restart prometheus-mysqld-exporter] *******************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 RUNNING HANDLER [mysql : Reset MySQL source] ***********************************
 skipping: [manuniia-2] => (item=stopreplica) 
@@ -858,8 +858,8 @@ changed: [manuniia-2] => (item=startreplica)
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 ok: [manuniia-3]
 
 TASK [docker : Install docker] *************************************************
@@ -882,7 +882,7 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 9 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-1]
+changed: [manuniia-2]
 The following additional packages will be installed:
   bridge-utils containerd dnsmasq-base pigz python3-websocket runc ubuntu-fan
 Suggested packages:
@@ -892,7 +892,7 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 9 newly installed, 0 to remove and 129 not upgraded.
-changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [docker : Ensure docker is enable and running] ****************************
 ok: [manuniia-3]
@@ -909,6 +909,16 @@ TASK [agama : Ensure /opt/agama directory is present] **************************
 +    "state": "directory"
  }
 
+changed: [manuniia-1]
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/agama",
+-    "state": "absent"
++    "state": "directory"
+ }
+
 changed: [manuniia-2]
 --- before
 +++ after
@@ -920,42 +930,21 @@ changed: [manuniia-2]
  }
 
 changed: [manuniia-3]
---- before
-+++ after
-@@ -1,4 +1,4 @@
- {
-     "path": "/opt/agama",
--    "state": "absent"
-+    "state": "directory"
- }
-
-changed: [manuniia-1]
 
 TASK [agama : Download Dockerfile and AGAMA applicationc] **********************
-changed: [manuniia-3] => (item=agama.py)
 changed: [manuniia-2] => (item=agama.py)
+changed: [manuniia-3] => (item=agama.py)
 changed: [manuniia-1] => (item=agama.py)
-changed: [manuniia-3] => (item=Dockerfile)
 changed: [manuniia-2] => (item=Dockerfile)
+changed: [manuniia-3] => (item=Dockerfile)
 changed: [manuniia-1] => (item=Dockerfile)
 
 TASK [agama : Build Docker image for agama] ************************************
+changed: [manuniia-1]
 changed: [manuniia-2]
 changed: [manuniia-3]
-changed: [manuniia-1]
 
 TASK [agama : Create agama container] ******************************************
---- before
-+++ after
-@@ -1,4 +1,4 @@
- {
--    "exists": false,
--    "running": false
-+    "exists": true,
-+    "running": true
- }
-
-changed: [manuniia-2] => (item=1)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -977,6 +966,17 @@ changed: [manuniia-1] => (item=1)
 +    "running": true
  }
 
+changed: [manuniia-2] => (item=1)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
 changed: [manuniia-3] => (item=1)
 --- before
 +++ after
@@ -988,7 +988,7 @@ changed: [manuniia-3] => (item=1)
 +    "running": true
  }
 
-changed: [manuniia-2] => (item=2)
+changed: [manuniia-1] => (item=2)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -999,7 +999,7 @@ changed: [manuniia-2] => (item=2)
 +    "running": true
  }
 
-changed: [manuniia-1] => (item=2)
+changed: [manuniia-2] => (item=2)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1032,7 +1032,6 @@ changed: [manuniia-2] => (item=3)
 +    "running": true
  }
 
-changed: [manuniia-1] => (item=3)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1044,11 +1043,12 @@ changed: [manuniia-1] => (item=3)
  }
 
 changed: [manuniia-3] => (item=3)
+changed: [manuniia-1] => (item=3)
 
 TASK [agama : Create CNAME for agama] ******************************************
 changed: [manuniia-1]
-changed: [manuniia-2]
 changed: [manuniia-3]
+changed: [manuniia-2]
 
 PLAY [Agama client server] *****************************************************
 
@@ -1063,85 +1063,96 @@ changed: [manuniia-3]
 
 TASK [agama_client : Copy agama-client script] *********************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpu9njhsm4/agama-client
-@@ -0,0 +1,69 @@
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp9wsndy1u/agama-client
+@@ -0,0 +1,81 @@
 +#!/bin/bash -eu
 +
-+# Please help Dora to find problems in this script
-+
++# Ensures the script logs and exits on missing configuration entries
 +for t in database_url database_name subnet; do
 +    if ! grep -q "^${t}=" /etc/agama-client/agama-client.conf; then
-+        logger "$0 Failed to get $t from config"
++        logger "$0: Failed to get $t from config"
 +        exit 1
 +    fi
 +done
 +
-+sleep 40
-+
-+which fping > /dev/null || { logger "$0 fping not found"; exit 1; }
-+
-+logger "Starting agama-client..."
-+
-+db_url=$(grep "^database_url=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
-+db_name=$(grep "^database_name=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
-+subnet=$(grep "^subnet=" /etc/agama-client/agama-client.conf | sed 's/^.*=//')
-+
-+if $(curl -s "$db_url/ping"); then
-+    logger "Will push data to $db_url"
-+else
-+    logger "Failed to connect to $db_url"
++# Check for the presence of fping and exit if not found
++if ! command -v fping &> /dev/null; then
++    logger "$0: fping not found"
 +    exit 1
 +fi
 +
-+logger "Creating database $db_name in $db_url"
-+curl -i -XPOST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" 1>/dev/null 2>/dev/null || { logger "$0 Failed to create database"; exit 1; } 
++logger "Starting agama-client..."
++
++# Extract configuration values directly without unnecessary command repetition
++db_url=$(grep "^database_url=" /etc/agama-client/agama-client.conf | cut -d'=' -f2)
++db_name=$(grep "^database_name=" /etc/agama-client/agama-client.conf | cut -d'=' -f2)
++subnet=$(grep "^subnet=" /etc/agama-client/agama-client.conf | cut -d'=' -f2)
++
++# Test connection to the database
++if ! curl -s --fail "$db_url/ping" > /dev/null; then
++    logger "$0: Failed to connect to $db_url"
++    exit 1
++fi
++
++logger "$0: Creating database $db_name in $db_url"
++if ! curl -i -X POST "$db_url/query" --data-urlencode "q=CREATE DATABASE $db_name" > /dev/null 2>&1; then
++    logger "$0: Failed to create database"
++    exit 1
++fi
 +
 +while true; do
-+    alive_hosts=$(fping -g $subnet -a 2>/dev/null || true)
-+    logger "Discovered $(echo "$alive_hosts" | wc -l) IPs"
++    alive_hosts=$(fping -g $subnet -a 2> /dev/null || true)
++    num_hosts=$(echo "$alive_hosts" | wc -l)
++    logger "$0: Discovered $num_hosts IPs"
++    
 +    for vm_ip in $alive_hosts; do
-+        # Getting content of agama page
-+        content=$(curl --connect-timeout 1 -w "%{http_code}" -s $vm_ip || continue)
-+        if test ${content: -3} -ne 200; then
-+            # nothing to do, going to next student
++        content=$(curl --connect-timeout 1 -s -w "%{http_code}" --silent "$vm_ip")
++        http_code=$(echo "$content" | tail -n1)
++
++        if [ "$http_code" != "200" ]; then
 +            continue
 +        fi
-+        # Getting where it's hosted
++
 +        vm_name=$(echo "$content" | grep "running on" | awk '{print $5}')
-+        if [ -z $vm_name ]; then
-+            # No agama running, skipping
++        if [ -z "$vm_name" ]; then
 +            continue
 +        fi
-+        ptr=$(host -W1 $vm_ip $vm_ip | awk '/domain name pointer/ {print $5}')
-+        if ! [ -z "$ptr" ]; then
-+            logger "Resolved $vm_ip to $ptr"
++
++        ptr=$(host -W1 $vm_ip | awk '/domain name pointer/ {print $5}')
++        if [ -n "$ptr" ]; then
 +            vm_name="$ptr"
++            logger "$0: Resolved $vm_ip to $ptr"
 +        fi
-+        # Number of items in agama
++
 +        table_rows=$(echo "$content" | grep -c "</tr>")
-+        # Write stats to inflixdb
-+        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" 1>/dev/null 2>/dev/null || logger "Failed to write to Influxdb" || logger "Failed to connect to http://influxdb:8086"
-+        # If hostname exists in agama - delete it
-+        if $(echo "$content" | grep -q $(hostname)); then
-+            for delete_url in $(echo "$content" | grep $(hostname) | grep -o '/items/.*/swap-state' | sed 's/swap-state/delete/'); do
-+                curl -s $vm_ip$delete_url -o /dev/null || logger "Failed to delete $(hostname) from $vm_ip"
++        curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "agama-stats,name=$vm_name items=$table_rows" > /dev/null 2>&1 || logger "$0: Failed to write to Influxdb"
++
++        if echo "$content" | grep -q "$(hostname)"; then
++            delete_urls=$(echo "$content" | grep "$(hostname)" | grep -o '/items/.*/delete')
++
++            for delete_url in $delete_urls; do
++                if ! curl -s "$vm_ip$delete_url" -o /dev/null; then
++                    logger "$0: Failed to delete $(hostname) from $vm_ip"
++                fi
 +            done
 +        fi
-+        # Add new item to agama
-+        curl -s -XPOST $vm_ip/items/add -F new_item="Checked from $(hostname) at $(date)" -o /dev/null || logger "Failed to update Agama on $vm_ip"
-+        logger "Posted check message to $vm_ip"
++
++        post_data="Checked from $(hostname) at $(date)"
++        if ! curl -s -XPOST "$vm_ip/items/add" -F "new_item=$post_data" -o /dev/null; then
++            logger "$0: Failed to update Agama on $vm_ip"
++        fi
++        logger "$0: Posted check message to $vm_ip"
 +    done
-+    logger "Waiting for the next cycle to start..."
++    logger "$0: Waiting for the next cycle to start..."
 +    sleep 300
 +done
-\ No newline at end of file
 
 changed: [manuniia-3]
 
 TASK [agama_client : Configure service agama-client] ***************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpjnzezzur/agama-client.service.j2
-@@ -0,0 +1,11 @@
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp76jqolrp/agama-client.service.j2
+@@ -0,0 +1,13 @@
 +[Unit]
 +Description= agama client service for gethering data from agama
 +Documentation=https://github.com/manuniia/ica0002/blob/main/roles/agama/templates/agama-client
@@ -1150,6 +1161,8 @@ TASK [agama_client : Configure service agama-client] ***************************
 +[Service]
 +User=agama-client
 +ExecStart=/usr/local/bin/agama-client
++Restart=on-failure
++RestartSec=5s 
 +
 +[Install]
 +WantedBy=multi-user.target
@@ -1170,7 +1183,7 @@ changed: [manuniia-3]
 
 TASK [agama_client : Copy agama-client script] *********************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmps2oiyv65/agama-client.conf.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpcsj66red/agama-client.conf.j2
 @@ -0,0 +1,3 @@
 +database_url=http://influxdb:8086
 +database_name=agama_client_db
@@ -1191,7 +1204,7 @@ ok: [manuniia-3]
 
 TASK [prometheus : config prometheus.yml file] *********************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpndles1vs/prometheus.yml.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpvc1ottj8/prometheus.yml.j2
 @@ -24,21 +24,58 @@
  # A scrape configuration containing exactly one endpoint to scrape:
  # Here it's Prometheus itself.
@@ -1267,14 +1280,14 @@ changed: [manuniia-3]
 
 TASK [prometheus : config prometheus default file] *****************************
 --- before: /etc/default/prometheus
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpep2g_yz5/default.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpso6ki8l7/default.j2
 @@ -1,110 +1,2 @@
 -# Set the command-line arguments to pass to the server.
 -# Due to shell escaping, to pass backslashes for regexes, you need to double
 -# them (\\d for \d). If running under systemd, you need to double them again
 -# (\\\\d to mean \d), and escape newlines too.
 -ARGS=""
-+ARGS="--web.external-url=http://193.40.156.67:43080/prometheus"
++ARGS="--web.external-url=http://193.40.156.67:32180/prometheus"
  
 -# prometheus supports the following options:
 -#
@@ -1430,7 +1443,7 @@ changed: [manuniia-3]
 
 TASK [grafana : Copy grafana provisioning datasources] *************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpi67yf9ff/sources.yaml.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpcgri81ag/sources.yaml.j2
 @@ -0,0 +1,28 @@
 +apiVersion: 1
 +
@@ -1465,7 +1478,7 @@ changed: [manuniia-3]
 
 TASK [grafana : Copy grafana provisioning dashboards] **************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmptdmd5bb3/boards.yaml.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpr6_p9e5q/boards.yaml.j2
 @@ -0,0 +1,11 @@
 +apiVersion: 1
 +
@@ -4703,7 +4716,7 @@ changed: [manuniia-3]
 
 TASK [nginx : Copy nginx configuration] ****************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpvjmb4iou/default.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp_awwm1ts/default.j2
 @@ -1,91 +1,25 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -4872,7 +4885,7 @@ changed: [manuniia-3]
 
 TASK [influxdb : Change influxdb conf file] ************************************
 --- before: /etc/influxdb/influxdb.conf
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpb5xx2yv9/influxdb.conf.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpyo7n98kl/influxdb.conf.j2
 @@ -1,596 +1,12 @@
 -### Welcome to the InfluxDB configuration file.
 -
@@ -5489,7 +5502,7 @@ changed: [manuniia-3]
 
 TASK [influxdb : Create system file for influxdb exporter] *********************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpaygf9n5r/influxdb_stats_exporter.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpzvuhg16e/influxdb_stats_exporter.j2
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Prometheus exporter for Influxdb
@@ -5541,7 +5554,7 @@ changed: [manuniia-3]
 
 TASK [influxdb : Create cron file for influxdb] ********************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpt7zqjbas/influxdb-backup
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpm6a9i8x4/influxdb-backup
 @@ -0,0 +1,3 @@
 +12 11,23 * * *  backup  rm -rf /home/backup/influxdb/*; influxd backup -portable -db telegraf /home/backup/influxdb
 +
@@ -5574,7 +5587,7 @@ TASK [keepalived : Ensure /etc/keepalived directory is present] ****************
 +    "state": "directory"
  }
 
-changed: [manuniia-2]
+changed: [manuniia-1]
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -5584,40 +5597,11 @@ changed: [manuniia-2]
 +    "state": "directory"
  }
 
-changed: [manuniia-1]
+changed: [manuniia-2]
 
 TASK [keepalived : create conf] ************************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpmqckjbrn/keepalived.conf.j2
-@@ -0,0 +1,24 @@
-+vrrp_script check_haproxy {                 
-+    script "path-to-check-script" 
-+    weight 20                              
-+    interval 1               
-+}
-+vrrp_instance XXX {             
-+    interface ens3
-+    virtual_router_id 13
-+    priority 100
-+
-+    advert_int 1                            
-+    virtual_ipaddress {                     
-+              192.168.101.147/24
-+                   
-+    }
-+    unicast_peer {                          
-+       lb-2
-+    }
-+    track_script {
-+        check_haproxy
-+    }
-+}
-+
-+
-
-changed: [manuniia-1]
---- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpqwcdo5x8/keepalived.conf.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpg3uifcg2/keepalived.conf.j2
 @@ -0,0 +1,24 @@
 +vrrp_script check_haproxy {                 
 +    script "path-to-check-script" 
@@ -5631,7 +5615,7 @@ changed: [manuniia-1]
 +    priority 50
 +    advert_int 1                            
 +    virtual_ipaddress {                     
-+              192.168.101.147/24
++              192.168.101.131/24
 +                   
 +    }
 +    unicast_peer {                          
@@ -5645,17 +5629,46 @@ changed: [manuniia-1]
 +
 
 changed: [manuniia-2]
+--- before
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpqxipwtqh/keepalived.conf.j2
+@@ -0,0 +1,24 @@
++vrrp_script check_haproxy {                 
++    script "path-to-check-script" 
++    weight 20                              
++    interval 1               
++}
++vrrp_instance XXX {             
++    interface ens3
++    virtual_router_id 13
++    priority 100
++
++    advert_int 1                            
++    virtual_ipaddress {                     
++              192.168.101.131/24
++                   
++    }
++    unicast_peer {                          
++       lb-2
++    }
++    track_script {
++        check_haproxy
++    }
++}
++
++
+
+changed: [manuniia-1]
 
 TASK [keepalived : create script] **********************************************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmppmxjnjkq/keepalived_script.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpt07forpv/keepalived_script.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
 
 changed: [manuniia-1]
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp15j7u_b1/keepalived_script.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpnxw13q0k/keepalived_script.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -5685,8 +5698,8 @@ ok: [manuniia-2]
 ok: [manuniia-1]
 
 TASK [keepalived : Download and install the keepalived stats Exporter] *********
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 TASK [keepalived : Unarchive a file that is already on the remote machine] *****
 changed: [manuniia-2]
@@ -5716,22 +5729,7 @@ changed: [manuniia-2]
 
 TASK [keepalived : Create keepalived_stats_exporter service] *******************
 --- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmps9l9rdfp/keepalived_stats_exporter.service.j2
-@@ -0,0 +1,10 @@
-+[Unit]
-+Description=keepalived_stats_exporter service
-+After=network-online.target
-+
-+[Service]
-+User=root
-+ExecStart=/usr/local/bin/keepalived-exporter
-+
-+[Install]
-+WantedBy=multi-user.target
-
-changed: [manuniia-2]
---- before
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpzd3wwltg/keepalived_stats_exporter.service.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmphxzkwovw/keepalived_stats_exporter.service.j2
 @@ -0,0 +1,10 @@
 +[Unit]
 +Description=keepalived_stats_exporter service
@@ -5745,6 +5743,21 @@ changed: [manuniia-2]
 +WantedBy=multi-user.target
 
 changed: [manuniia-1]
+--- before
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpieb8qoi0/keepalived_stats_exporter.service.j2
+@@ -0,0 +1,10 @@
++[Unit]
++Description=keepalived_stats_exporter service
++After=network-online.target
++
++[Service]
++User=root
++ExecStart=/usr/local/bin/keepalived-exporter
++
++[Install]
++WantedBy=multi-user.target
+
+changed: [manuniia-2]
 
 TASK [keepalived : Ensure keepalived and exporter are enable and running] ******
 ok: [manuniia-1] => (item=keepalived)
@@ -5753,18 +5766,18 @@ changed: [manuniia-1] => (item=prometheus-keepalived-stats-exporter)
 changed: [manuniia-2] => (item=prometheus-keepalived-stats-exporter)
 
 RUNNING HANDLER [keepalived : Restart keepalived] ******************************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 RUNNING HANDLER [keepalived : Restart keepalived-stats-exporter] ***************
-changed: [manuniia-1]
 changed: [manuniia-2]
+changed: [manuniia-1]
 
 PLAY [haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [haproxy : install Haproxy] ***********************************************
 The following additional packages will be installed:
@@ -5786,7 +5799,7 @@ changed: [manuniia-1]
 
 TASK [haproxy : create conf] ***************************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpbhb7tkzg/haproxy.cfg.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpoar5h3x8/haproxy.cfg.j2
 @@ -32,3 +32,21 @@
  	errorfile 502 /etc/haproxy/errors/502.http
  	errorfile 503 /etc/haproxy/errors/503.http
@@ -5812,7 +5825,7 @@ TASK [haproxy : create conf] ***************************************************
 
 changed: [manuniia-1]
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmpkm4zb3s8/haproxy.cfg.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmpdse22scf/haproxy.cfg.j2
 @@ -32,3 +32,21 @@
  	errorfile 502 /etc/haproxy/errors/502.http
  	errorfile 503 /etc/haproxy/errors/503.http
@@ -5840,48 +5853,7 @@ changed: [manuniia-2]
 
 TASK [haproxy : create path for exporter] **************************************
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmps5wpgazr/prometheus-haproxy-exporter.j2
-@@ -1,35 +1,2 @@
--# Set the command-line arguments to pass to the server.
--# Due to shell scaping, to pass backslashes for regexes, you need to double
--# them (\\d for \d). If running under systemd, you need to double them again
--# (\\\\d to mean \d), and escape newlines too.
--ARGS=""
-+ARGS=--haproxy.scrape-uri='http://lb-1:9188/haproxy?stats;csv'
- 
--# Prometheus-haproxy-exporter supports the following options:
--#
--#  --web.listen-address=":9101"
--#    Address to listen on for web interface and telemetry.
--#  --web.telemetry-path="/metrics"
--#    Path under which to expose metrics.
--#  --haproxy.scrape-uri="http://localhost/;csv"
--#    URI on which to scrape HAProxy.
--#  --haproxy.ssl-verify
--#    Flag that enables SSL certificate verification for the scrape URI
--#  --haproxy.server-metric-fields="2,3,4,5,6,7,8,9,13,14,15,16,17,18,21,24,33,35,38,39,40,41,42,43,44"
--#    Comma-separated list of exported server metrics. See
--#    http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#9.1
--#  --haproxy.timeout=5s
--#    Timeout for trying to get stats from HAProxy.
--#  --haproxy.pid-file=""
--#    Path to HAProxy pid file.
--#
--#    If provided, the standard process metrics get exported for the HAProxy
--#    process, prefixed with 'haproxy_process_...'. The haproxy_process exporter
--#    needs to have read access to files owned by the HAProxy process. Depends
--#    on the availability of /proc.
--#    https://prometheus.io/docs/instrumenting/writing_clientlibs/#process-metrics.
--#  --log.level="info"
--#    Only log messages with the given severity or above.
--#    Valid levels: [debug, info, warn, error, fatal]
--#  --log.format="logger:stderr"
--#    Set the log target and format. Example:
--#    "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true"
-
-changed: [manuniia-1]
---- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /Users/manunia/.ansible/tmp/ansible-local-264750zkx4dyf/tmp458m95u7/prometheus-haproxy-exporter.j2
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp4z517we1/prometheus-haproxy-exporter.j2
 @@ -1,35 +1,2 @@
 -# Set the command-line arguments to pass to the server.
 -# Due to shell scaping, to pass backslashes for regexes, you need to double
@@ -5921,10 +5893,51 @@ changed: [manuniia-1]
 -#    "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true"
 
 changed: [manuniia-2]
+--- before: /etc/default/prometheus-haproxy-exporter
++++ after: /Users/manunia/.ansible/tmp/ansible-local-57827xh9rxhi9/tmp7z5re6_b/prometheus-haproxy-exporter.j2
+@@ -1,35 +1,2 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell scaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
++ARGS=--haproxy.scrape-uri='http://lb-1:9188/haproxy?stats;csv'
+ 
+-# Prometheus-haproxy-exporter supports the following options:
+-#
+-#  --web.listen-address=":9101"
+-#    Address to listen on for web interface and telemetry.
+-#  --web.telemetry-path="/metrics"
+-#    Path under which to expose metrics.
+-#  --haproxy.scrape-uri="http://localhost/;csv"
+-#    URI on which to scrape HAProxy.
+-#  --haproxy.ssl-verify
+-#    Flag that enables SSL certificate verification for the scrape URI
+-#  --haproxy.server-metric-fields="2,3,4,5,6,7,8,9,13,14,15,16,17,18,21,24,33,35,38,39,40,41,42,43,44"
+-#    Comma-separated list of exported server metrics. See
+-#    http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#9.1
+-#  --haproxy.timeout=5s
+-#    Timeout for trying to get stats from HAProxy.
+-#  --haproxy.pid-file=""
+-#    Path to HAProxy pid file.
+-#
+-#    If provided, the standard process metrics get exported for the HAProxy
+-#    process, prefixed with 'haproxy_process_...'. The haproxy_process exporter
+-#    needs to have read access to files owned by the HAProxy process. Depends
+-#    on the availability of /proc.
+-#    https://prometheus.io/docs/instrumenting/writing_clientlibs/#process-metrics.
+-#  --log.level="info"
+-#    Only log messages with the given severity or above.
+-#    Valid levels: [debug, info, warn, error, fatal]
+-#  --log.format="logger:stderr"
+-#    Set the log target and format. Example:
+-#    "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true"
+
+changed: [manuniia-1]
 
 TASK [haproxy : Ensure haproxy and exporter are enable and running] ************
-ok: [manuniia-2] => (item=haproxy)
 ok: [manuniia-1] => (item=haproxy)
+ok: [manuniia-2] => (item=haproxy)
 ok: [manuniia-2] => (item=prometheus-haproxy-exporter)
 ok: [manuniia-1] => (item=prometheus-haproxy-exporter)
 
@@ -5955,19 +5968,19 @@ ok: [manuniia-2]
 ok: [manuniia-3]
 
 TASK [init : Update APT cache] *************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
 ok: [manuniia-3]
+ok: [manuniia-1]
 
 TASK [init : Install dnspython library] ****************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
 ok: [manuniia-3]
+ok: [manuniia-1]
 
 TASK [init : install prometheus] ***********************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
 ok: [manuniia-3]
+ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [init : install rsyslog] **************************************************
 ok: [manuniia-2]
@@ -5976,13 +5989,13 @@ ok: [manuniia-3]
 
 TASK [init : Copy rsyslog conf for telegraf] ***********************************
 ok: [manuniia-2]
-ok: [manuniia-1]
 ok: [manuniia-3]
+ok: [manuniia-1]
 
 TASK [init : Create /home/backup directory] ************************************
 ok: [manuniia-3]
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [init : Create a user backup] *********************************************
 ok: [manuniia-2]
@@ -5990,9 +6003,9 @@ ok: [manuniia-3]
 ok: [manuniia-1]
 
 TASK [init : Add backup server SSH key to the list of known hosts] *************
-ok: [manuniia-1]
-ok: [manuniia-2]
 ok: [manuniia-3]
+ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [init : Create /home/backup/restore directory] ****************************
 ok: [manuniia-3]
@@ -6007,8 +6020,8 @@ ok: [manuniia-1]
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 ok: [manuniia-3]
 
 TASK [bind : Install bind] *****************************************************
@@ -6017,12 +6030,12 @@ ok: [manuniia-2]
 ok: [manuniia-3]
 
 TASK [bind : Copy bind9 configuration] *****************************************
-ok: [manuniia-1] => (item=None)
-ok: [manuniia-1]
-ok: [manuniia-3] => (item=None)
-ok: [manuniia-3]
 ok: [manuniia-2] => (item=None)
+ok: [manuniia-1] => (item=None)
+ok: [manuniia-3] => (item=None)
 ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
 
 TASK [bind : Configure dns zone] ***********************************************
 skipping: [manuniia-2]
@@ -6030,8 +6043,8 @@ skipping: [manuniia-1]
 ok: [manuniia-3]
 
 TASK [bind : Configure dns reverse zone] ***************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 ok: [manuniia-3]
 
 TASK [bind : Extract bind_exporter-0.6.1 into /usr/local/bin/] *****************
@@ -6045,516 +6058,17 @@ ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [bind : Configure bind9-exporter] *****************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [bind : Ensure bind9 and exporter are enable and running] *****************
-ok: [manuniia-2] => (item=bind9)
-ok: [manuniia-1] => (item=bind9)
-ok: [manuniia-3] => (item=bind9)
-ok: [manuniia-2] => (item=prometheus-bind9-exporter)
-ok: [manuniia-3] => (item=prometheus-bind9-exporter)
-ok: [manuniia-1] => (item=prometheus-bind9-exporter)
-
-TASK [bind : meta] *************************************************************
-
-TASK [bind : meta] *************************************************************
-
-TASK [bind : meta] *************************************************************
-
-TASK [bind : Create records for backup] ****************************************
-skipping: [manuniia-2]
-skipping: [manuniia-1]
-ok: [manuniia-3]
-
-TASK [bind : Create CNAME for bind] ********************************************
-ok: [manuniia-1]
-ok: [manuniia-3]
-ok: [manuniia-2]
-
-PLAY [Resolver] ****************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
-ok: [manuniia-3]
-ok: [manuniia-2]
-
-TASK [resolver : Copy resolver configuration] **********************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-PLAY [Database server] *********************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : create my.cnf file for prometheus] *******************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : create my.cnf file for backup] ***********************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : Install mysql] ***************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [mysql : Copy mysqld configuration] ***************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : Ensure MySQL and exporter are enable and running] ****************
-ok: [manuniia-1] => (item=mysql)
-ok: [manuniia-2] => (item=mysql)
-ok: [manuniia-2] => (item=prometheus-mysqld-exporter)
-ok: [manuniia-1] => (item=prometheus-mysqld-exporter)
-
-TASK [mysql : MySQL database] **************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : MySQL user] ******************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : MySQL exporter user] *********************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [mysql : Create /home/backup/mysql directory] *****************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [mysql : MySQL backup user] ***********************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : Create cron file for mysql] **************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [mysql : MySQL replication user] ******************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [mysql : Read only mode for replica server] *******************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [mysql : Create CNAME for mysql] ******************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-PLAY [Web server] **************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [docker : Install docker] *************************************************
-ok: [manuniia-2]
-ok: [manuniia-3]
-ok: [manuniia-1]
-
-TASK [docker : Ensure docker is enable and running] ****************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [agama : Ensure /opt/agama directory is present] **************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [agama : Download Dockerfile and AGAMA applicationc] **********************
-ok: [manuniia-2] => (item=agama.py)
-ok: [manuniia-3] => (item=agama.py)
-ok: [manuniia-1] => (item=agama.py)
-ok: [manuniia-2] => (item=Dockerfile)
-ok: [manuniia-1] => (item=Dockerfile)
-ok: [manuniia-3] => (item=Dockerfile)
-
-TASK [agama : Build Docker image for agama] ************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [agama : Create agama container] ******************************************
-ok: [manuniia-2] => (item=1)
-ok: [manuniia-1] => (item=1)
-ok: [manuniia-3] => (item=1)
-ok: [manuniia-2] => (item=2)
-ok: [manuniia-1] => (item=2)
-ok: [manuniia-3] => (item=2)
-ok: [manuniia-2] => (item=3)
-ok: [manuniia-1] => (item=3)
-ok: [manuniia-3] => (item=3)
-
-TASK [agama : Create CNAME for agama] ******************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-ok: [manuniia-3]
-
-PLAY [Agama client server] *****************************************************
-
-TASK [agama_client : Ensure there is a system user named agama-client] *********
-ok: [manuniia-3]
-
-TASK [agama_client : Install fping] ********************************************
-ok: [manuniia-3]
-
-TASK [agama_client : Copy agama-client script] *********************************
-ok: [manuniia-3]
-
-TASK [agama_client : Configure service agama-client] ***************************
-ok: [manuniia-3]
-
-TASK [agama_client : Ensure /etc/agama-client directory is present] ************
-ok: [manuniia-3]
-
-TASK [agama_client : Copy agama-client script] *********************************
-ok: [manuniia-3]
-
-TASK [agama_client : Ensure agama-client is enable and running] ****************
-changed: [manuniia-3]
-
-PLAY [prometheus] **************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-3]
-
-TASK [prometheus : config prometheus.yml file] *********************************
-ok: [manuniia-3]
-
-TASK [prometheus : config prometheus default file] *****************************
-ok: [manuniia-3]
-
-TASK [prometheus : Start prometheus service] ***********************************
-ok: [manuniia-3]
-
-TASK [prometheus : Create CNAME for prometheus] ********************************
-ok: [manuniia-3]
-
-PLAY [grafana] *****************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-3]
-
-TASK [docker : Install docker] *************************************************
-ok: [manuniia-3]
-
-TASK [docker : Ensure docker is enable and running] ****************************
-ok: [manuniia-3]
-
-TASK [grafana : Create directories for grafana container] **********************
-ok: [manuniia-3] => (item=dashboards)
-ok: [manuniia-3] => (item=datasources)
-
-TASK [grafana : Pre-create grafana.ini file for grafana container] *************
-ok: [manuniia-3]
-
-TASK [grafana : Copy grafana provisioning datasources] *************************
-ok: [manuniia-3]
-
-TASK [grafana : Copy grafana provisioning dashboards] **************************
-ok: [manuniia-3]
-
-TASK [grafana : Copy main.json to dashboards] **********************************
-ok: [manuniia-3] => (item=main)
-ok: [manuniia-3] => (item=telegraf)
-ok: [manuniia-3] => (item=agama-client)
-ok: [manuniia-3] => (item=backups)
-ok: [manuniia-3] => (item=mysql)
-
-TASK [grafana : Create a grafana container] ************************************
-ok: [manuniia-3]
-
-TASK [grafana : Create CNAME for grafana] **************************************
-ok: [manuniia-3]
-
-TASK [nginx : Install nginx] ***************************************************
-ok: [manuniia-3]
-
-TASK [nginx : Copy nginx configuration] ****************************************
-ok: [manuniia-3]
-
-TASK [nginx : meta] ************************************************************
-
-TASK [nginx : Ensure nginx and exporter are enable and running] ****************
-ok: [manuniia-3] => (item=nginx)
-ok: [manuniia-3] => (item=prometheus-nginx-exporter)
-
-PLAY [influxdb] ****************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-3]
-
-TASK [influxdb : check if already installed influxdb] **************************
-ok: [manuniia-3]
-
-TASK [influxdb : download influxdb] ********************************************
-skipping: [manuniia-3]
-
-TASK [influxdb : add InfluxDB repository key] **********************************
-ok: [manuniia-3]
-
-TASK [influxdb : Add InfluxDB APT repository] **********************************
-ok: [manuniia-3]
-
-TASK [influxdb : install influxdb] *********************************************
-skipping: [manuniia-3]
-
-TASK [influxdb : Change influxdb conf file] ************************************
-ok: [manuniia-3]
-
-TASK [influxdb : Create directory for influxdb-stats-exporter] *****************
-ok: [manuniia-3]
-
-TASK [influxdb : Download InfluxDB Stats Exporter binary] **********************
-ok: [manuniia-3]
-
-TASK [influxdb : Create system file for influxdb exporter] *********************
-ok: [manuniia-3]
-
-TASK [influxdb : Ensure influxdb and exporter are enable and running] **********
-ok: [manuniia-3] => (item=influxdb)
-ok: [manuniia-3] => (item=prometheus-influxdb-stats-exporter)
-
-TASK [influxdb : install telegraf] *********************************************
-ok: [manuniia-3]
-
-TASK [influxdb : Create telegraf.conf] *****************************************
-ok: [manuniia-3]
-
-TASK [influxdb : Ensure telegraf is enable and running] ************************
-ok: [manuniia-3]
-
-TASK [influxdb : Create /home/backup/influxdb directory] ***********************
-ok: [manuniia-3]
-
-TASK [influxdb : Create cron file for influxdb] ********************************
-ok: [manuniia-3]
-
-TASK [influxdb : Create CNAME for influxdb] ************************************
-ok: [manuniia-3]
-
-TASK [influxdb : Create CNAME for telegraf] ************************************
-ok: [manuniia-3]
-
-PLAY [keepalived] **************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [keepalived : Ensure /etc/keepalived directory is present] ****************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [keepalived : create conf] ************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [keepalived : create script] **********************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [keepalived : install Keepalived] *****************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [keepalived : check if already downloaded keepalived] *********************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [keepalived : Download and install the keepalived stats Exporter] *********
-skipping: [manuniia-1]
-skipping: [manuniia-2]
-
-TASK [keepalived : Unarchive a file that is already on the remote machine] *****
-skipping: [manuniia-1]
-skipping: [manuniia-2]
-
-TASK [keepalived : Create a directory for keepalived_stats_exporter] ***********
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [keepalived : Create keepalived_stats_exporter service] *******************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [keepalived : Ensure keepalived and exporter are enable and running] ******
-ok: [manuniia-2] => (item=keepalived)
-ok: [manuniia-1] => (item=keepalived)
-ok: [manuniia-2] => (item=prometheus-keepalived-stats-exporter)
-ok: [manuniia-1] => (item=prometheus-keepalived-stats-exporter)
-
-PLAY [haproxy] *****************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [haproxy : install Haproxy] ***********************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-TASK [haproxy : create conf] ***************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [haproxy : create path for exporter] **************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [haproxy : Ensure haproxy and exporter are enable and running] ************
-ok: [manuniia-2] => (item=haproxy)
-ok: [manuniia-1] => (item=haproxy)
-ok: [manuniia-2] => (item=prometheus-haproxy-exporter)
-ok: [manuniia-1] => (item=prometheus-haproxy-exporter)
-
-TASK [haproxy : Create CNAME for haproxy] **************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-
-PLAY RECAP *********************************************************************
-manuniia-1                 : ok=60   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
-manuniia-2                 : ok=60   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
-manuniia-3                 : ok=73   changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
-
-+ ansible all -b -m reboot -a test_command=uptime
-manuniia-3 | CHANGED => {
-    "changed": true,
-    "elapsed": 61,
-    "rebooted": true
-}
-manuniia-2 | CHANGED => {
-    "changed": true,
-    "elapsed": 63,
-    "rebooted": true
-}
-manuniia-1 | CHANGED => {
-    "changed": true,
-    "elapsed": 63,
-    "rebooted": true
-}
-+ sleep 15
-+ ansible-playbook infra.yaml --diff
-
-PLAY [Initial setup] ***********************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-ok: [manuniia-3]
-
-TASK [init : Update APT cache] *************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [init : Install dnspython library] ****************************************
-ok: [manuniia-3]
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [init : install prometheus] ***********************************************
-ok: [manuniia-3]
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [init : install rsyslog] **************************************************
-ok: [manuniia-3]
-ok: [manuniia-1]
-ok: [manuniia-2]
-
-TASK [init : Copy rsyslog conf for telegraf] ***********************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [init : Create /home/backup directory] ************************************
-ok: [manuniia-2]
-ok: [manuniia-1]
-ok: [manuniia-3]
-
-TASK [init : Create a user backup] *********************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [init : Add backup server SSH key to the list of known hosts] *************
-ok: [manuniia-1]
-ok: [manuniia-3]
-ok: [manuniia-2]
-
-TASK [init : Create /home/backup/restore directory] ****************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [init : install duplicity] ************************************************
-ok: [manuniia-1]
-ok: [manuniia-3]
-ok: [manuniia-2]
-
-PLAY [DNS server] **************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
-ok: [manuniia-3]
-ok: [manuniia-2]
-
-TASK [bind : Install bind] *****************************************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [bind : Copy bind9 configuration] *****************************************
-ok: [manuniia-2] => (item=None)
-ok: [manuniia-1] => (item=None)
-ok: [manuniia-3] => (item=None)
-ok: [manuniia-2]
-ok: [manuniia-3]
-ok: [manuniia-1]
-
-TASK [bind : Configure dns zone] ***********************************************
-skipping: [manuniia-2]
-skipping: [manuniia-1]
-ok: [manuniia-3]
-
-TASK [bind : Configure dns reverse zone] ***************************************
-ok: [manuniia-2]
-ok: [manuniia-3]
-ok: [manuniia-1]
-
-TASK [bind : Extract bind_exporter-0.6.1 into /usr/local/bin/] *****************
-ok: [manuniia-2]
-ok: [manuniia-1]
-ok: [manuniia-3]
-
-TASK [bind : Copy file with owner and permissions] *****************************
-ok: [manuniia-1]
-ok: [manuniia-2]
-ok: [manuniia-3]
-
-TASK [bind : Configure bind9-exporter] *****************************************
 ok: [manuniia-2]
 ok: [manuniia-1]
 ok: [manuniia-3]
 
 TASK [bind : Ensure bind9 and exporter are enable and running] *****************
 ok: [manuniia-1] => (item=bind9)
-ok: [manuniia-3] => (item=bind9)
 ok: [manuniia-2] => (item=bind9)
+ok: [manuniia-3] => (item=bind9)
 ok: [manuniia-1] => (item=prometheus-bind9-exporter)
-ok: [manuniia-3] => (item=prometheus-bind9-exporter)
 ok: [manuniia-2] => (item=prometheus-bind9-exporter)
+ok: [manuniia-3] => (item=prometheus-bind9-exporter)
 
 TASK [bind : meta] *************************************************************
 
@@ -6575,14 +6089,14 @@ ok: [manuniia-1]
 PLAY [Resolver] ****************************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [manuniia-1]
 ok: [manuniia-2]
 ok: [manuniia-3]
-ok: [manuniia-1]
 
 TASK [resolver : Copy resolver configuration] **********************************
-ok: [manuniia-2]
 ok: [manuniia-1]
 ok: [manuniia-3]
+ok: [manuniia-2]
 
 PLAY [Database server] *********************************************************
 
@@ -6591,16 +6105,16 @@ ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [mysql : create my.cnf file for prometheus] *******************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : create my.cnf file for backup] ***********************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : Install mysql] ***************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [mysql : Copy mysqld configuration] ***************************************
 ok: [manuniia-1]
@@ -6609,40 +6123,40 @@ ok: [manuniia-2]
 TASK [mysql : Ensure MySQL and exporter are enable and running] ****************
 ok: [manuniia-2] => (item=mysql)
 ok: [manuniia-1] => (item=mysql)
-ok: [manuniia-2] => (item=prometheus-mysqld-exporter)
 ok: [manuniia-1] => (item=prometheus-mysqld-exporter)
+ok: [manuniia-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : MySQL database] **************************************************
 ok: [manuniia-2]
 ok: [manuniia-1]
 
 TASK [mysql : MySQL user] ******************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : MySQL exporter user] *********************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : Create /home/backup/mysql directory] *****************************
 ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [mysql : MySQL backup user] ***********************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : Create cron file for mysql] **************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [mysql : MySQL replication user] ******************************************
 ok: [manuniia-2]
 ok: [manuniia-1]
 
 TASK [mysql : Read only mode for replica server] *******************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [mysql : Create CNAME for mysql] ******************************************
 ok: [manuniia-1]
@@ -6651,53 +6165,53 @@ ok: [manuniia-2]
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
 ok: [manuniia-3]
+ok: [manuniia-2]
 
 TASK [docker : Install docker] *************************************************
+ok: [manuniia-1]
 ok: [manuniia-2]
 ok: [manuniia-3]
-ok: [manuniia-1]
 
 TASK [docker : Ensure docker is enable and running] ****************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 ok: [manuniia-3]
 
 TASK [agama : Ensure /opt/agama directory is present] **************************
+ok: [manuniia-3]
 ok: [manuniia-1]
 ok: [manuniia-2]
-ok: [manuniia-3]
 
 TASK [agama : Download Dockerfile and AGAMA applicationc] **********************
 ok: [manuniia-2] => (item=agama.py)
 ok: [manuniia-1] => (item=agama.py)
 ok: [manuniia-3] => (item=agama.py)
-ok: [manuniia-2] => (item=Dockerfile)
 ok: [manuniia-1] => (item=Dockerfile)
+ok: [manuniia-2] => (item=Dockerfile)
 ok: [manuniia-3] => (item=Dockerfile)
 
 TASK [agama : Build Docker image for agama] ************************************
 ok: [manuniia-1]
-ok: [manuniia-2]
 ok: [manuniia-3]
+ok: [manuniia-2]
 
 TASK [agama : Create agama container] ******************************************
+ok: [manuniia-2] => (item=1)
 ok: [manuniia-1] => (item=1)
 ok: [manuniia-3] => (item=1)
-ok: [manuniia-2] => (item=1)
-ok: [manuniia-3] => (item=2)
-ok: [manuniia-1] => (item=2)
 ok: [manuniia-2] => (item=2)
+ok: [manuniia-1] => (item=2)
+ok: [manuniia-3] => (item=2)
+ok: [manuniia-2] => (item=3)
 ok: [manuniia-1] => (item=3)
 ok: [manuniia-3] => (item=3)
-ok: [manuniia-2] => (item=3)
 
 TASK [agama : Create CNAME for agama] ******************************************
 ok: [manuniia-2]
-ok: [manuniia-1]
 ok: [manuniia-3]
+ok: [manuniia-1]
 
 PLAY [Agama client server] *****************************************************
 
@@ -6848,28 +6362,28 @@ ok: [manuniia-3]
 PLAY [keepalived] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [keepalived : Ensure /etc/keepalived directory is present] ****************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [keepalived : create conf] ************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [keepalived : create script] **********************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [keepalived : install Keepalived] *****************************************
 ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [keepalived : check if already downloaded keepalived] *********************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [keepalived : Download and install the keepalived stats Exporter] *********
 skipping: [manuniia-1]
@@ -6888,34 +6402,34 @@ ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [keepalived : Ensure keepalived and exporter are enable and running] ******
-ok: [manuniia-1] => (item=keepalived)
 ok: [manuniia-2] => (item=keepalived)
-ok: [manuniia-1] => (item=prometheus-keepalived-stats-exporter)
+ok: [manuniia-1] => (item=keepalived)
 ok: [manuniia-2] => (item=prometheus-keepalived-stats-exporter)
+ok: [manuniia-1] => (item=prometheus-keepalived-stats-exporter)
 
 PLAY [haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [manuniia-1]
 ok: [manuniia-2]
+ok: [manuniia-1]
 
 TASK [haproxy : install Haproxy] ***********************************************
 ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [haproxy : create conf] ***************************************************
-ok: [manuniia-2]
 ok: [manuniia-1]
+ok: [manuniia-2]
 
 TASK [haproxy : create path for exporter] **************************************
 ok: [manuniia-1]
 ok: [manuniia-2]
 
 TASK [haproxy : Ensure haproxy and exporter are enable and running] ************
-ok: [manuniia-2] => (item=haproxy)
 ok: [manuniia-1] => (item=haproxy)
-ok: [manuniia-2] => (item=prometheus-haproxy-exporter)
+ok: [manuniia-2] => (item=haproxy)
 ok: [manuniia-1] => (item=prometheus-haproxy-exporter)
+ok: [manuniia-2] => (item=prometheus-haproxy-exporter)
 
 TASK [haproxy : Create CNAME for haproxy] **************************************
 ok: [manuniia-1]
@@ -6926,5 +6440,504 @@ manuniia-1                 : ok=60   changed=0    unreachable=0    failed=0    s
 manuniia-2                 : ok=60   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 manuniia-3                 : ok=73   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
++ ansible all -b -m reboot -a test_command=uptime
+manuniia-1 | CHANGED => {
+    "changed": true,
+    "elapsed": 55,
+    "rebooted": true
+}
+manuniia-3 | CHANGED => {
+    "changed": true,
+    "elapsed": 54,
+    "rebooted": true
+}
+manuniia-2 | CHANGED => {
+    "changed": true,
+    "elapsed": 55,
+    "rebooted": true
+}
++ sleep 15
++ ansible-playbook infra.yaml --diff
+
+PLAY [Initial setup] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+TASK [init : Update APT cache] *************************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [init : Install dnspython library] ****************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [init : install prometheus] ***********************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [init : install rsyslog] **************************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [init : Copy rsyslog conf for telegraf] ***********************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+TASK [init : Create /home/backup directory] ************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+TASK [init : Create a user backup] *********************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [init : Add backup server SSH key to the list of known hosts] *************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+TASK [init : Create /home/backup/restore directory] ****************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [init : install duplicity] ************************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
+
+PLAY [DNS server] **************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-2]
+ok: [manuniia-3]
+ok: [manuniia-1]
+
+TASK [bind : Install bind] *****************************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [bind : Copy bind9 configuration] *****************************************
+ok: [manuniia-1] => (item=None)
+ok: [manuniia-1]
+ok: [manuniia-2] => (item=None)
+ok: [manuniia-2]
+ok: [manuniia-3] => (item=None)
+ok: [manuniia-3]
+
+TASK [bind : Configure dns zone] ***********************************************
+skipping: [manuniia-2]
+skipping: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [bind : Configure dns reverse zone] ***************************************
+ok: [manuniia-3]
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [bind : Extract bind_exporter-0.6.1 into /usr/local/bin/] *****************
+ok: [manuniia-3]
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [bind : Copy file with owner and permissions] *****************************
+ok: [manuniia-3]
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [bind : Configure bind9-exporter] *****************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [bind : Ensure bind9 and exporter are enable and running] *****************
+ok: [manuniia-1] => (item=bind9)
+ok: [manuniia-2] => (item=bind9)
+ok: [manuniia-3] => (item=bind9)
+ok: [manuniia-1] => (item=prometheus-bind9-exporter)
+ok: [manuniia-2] => (item=prometheus-bind9-exporter)
+ok: [manuniia-3] => (item=prometheus-bind9-exporter)
+
+TASK [bind : meta] *************************************************************
+
+TASK [bind : meta] *************************************************************
+
+TASK [bind : meta] *************************************************************
+
+TASK [bind : Create records for backup] ****************************************
+skipping: [manuniia-2]
+skipping: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [bind : Create CNAME for bind] ********************************************
+ok: [manuniia-3]
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+PLAY [Resolver] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+ok: [manuniia-3]
+
+TASK [resolver : Copy resolver configuration] **********************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+PLAY [Database server] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [mysql : create my.cnf file for prometheus] *******************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : create my.cnf file for backup] ***********************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : Install mysql] ***************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [mysql : Copy mysqld configuration] ***************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : Ensure MySQL and exporter are enable and running] ****************
+ok: [manuniia-2] => (item=mysql)
+ok: [manuniia-1] => (item=mysql)
+ok: [manuniia-1] => (item=prometheus-mysqld-exporter)
+ok: [manuniia-2] => (item=prometheus-mysqld-exporter)
+
+TASK [mysql : MySQL database] **************************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : MySQL user] ******************************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : MySQL exporter user] *********************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : Create /home/backup/mysql directory] *****************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [mysql : MySQL backup user] ***********************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [mysql : Create cron file for mysql] **************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : MySQL replication user] ******************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [mysql : Read only mode for replica server] *******************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [mysql : Create CNAME for mysql] ******************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+PLAY [Web server] **************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-3]
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [docker : Install docker] *************************************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [docker : Ensure docker is enable and running] ****************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [agama : Ensure /opt/agama directory is present] **************************
+ok: [manuniia-1]
+ok: [manuniia-3]
+ok: [manuniia-2]
+
+TASK [agama : Download Dockerfile and AGAMA applicationc] **********************
+ok: [manuniia-2] => (item=agama.py)
+ok: [manuniia-3] => (item=agama.py)
+ok: [manuniia-1] => (item=agama.py)
+ok: [manuniia-3] => (item=Dockerfile)
+ok: [manuniia-2] => (item=Dockerfile)
+ok: [manuniia-1] => (item=Dockerfile)
+
+TASK [agama : Build Docker image for agama] ************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+ok: [manuniia-3]
+
+TASK [agama : Create agama container] ******************************************
+ok: [manuniia-3] => (item=1)
+ok: [manuniia-1] => (item=1)
+ok: [manuniia-2] => (item=1)
+ok: [manuniia-2] => (item=2)
+ok: [manuniia-1] => (item=2)
+ok: [manuniia-3] => (item=2)
+ok: [manuniia-2] => (item=3)
+ok: [manuniia-1] => (item=3)
+ok: [manuniia-3] => (item=3)
+
+TASK [agama : Create CNAME for agama] ******************************************
+ok: [manuniia-3]
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+PLAY [Agama client server] *****************************************************
+
+TASK [agama_client : Ensure there is a system user named agama-client] *********
+ok: [manuniia-3]
+
+TASK [agama_client : Install fping] ********************************************
+ok: [manuniia-3]
+
+TASK [agama_client : Copy agama-client script] *********************************
+ok: [manuniia-3]
+
+TASK [agama_client : Configure service agama-client] ***************************
+ok: [manuniia-3]
+
+TASK [agama_client : Ensure /etc/agama-client directory is present] ************
+ok: [manuniia-3]
+
+TASK [agama_client : Copy agama-client script] *********************************
+ok: [manuniia-3]
+
+TASK [agama_client : Ensure agama-client is enable and running] ****************
+ok: [manuniia-3]
+
+PLAY [prometheus] **************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-3]
+
+TASK [prometheus : config prometheus.yml file] *********************************
+ok: [manuniia-3]
+
+TASK [prometheus : config prometheus default file] *****************************
+ok: [manuniia-3]
+
+TASK [prometheus : Start prometheus service] ***********************************
+ok: [manuniia-3]
+
+TASK [prometheus : Create CNAME for prometheus] ********************************
+ok: [manuniia-3]
+
+PLAY [grafana] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-3]
+
+TASK [docker : Install docker] *************************************************
+ok: [manuniia-3]
+
+TASK [docker : Ensure docker is enable and running] ****************************
+ok: [manuniia-3]
+
+TASK [grafana : Create directories for grafana container] **********************
+ok: [manuniia-3] => (item=dashboards)
+ok: [manuniia-3] => (item=datasources)
+
+TASK [grafana : Pre-create grafana.ini file for grafana container] *************
+ok: [manuniia-3]
+
+TASK [grafana : Copy grafana provisioning datasources] *************************
+ok: [manuniia-3]
+
+TASK [grafana : Copy grafana provisioning dashboards] **************************
+ok: [manuniia-3]
+
+TASK [grafana : Copy main.json to dashboards] **********************************
+ok: [manuniia-3] => (item=main)
+ok: [manuniia-3] => (item=telegraf)
+ok: [manuniia-3] => (item=agama-client)
+ok: [manuniia-3] => (item=backups)
+ok: [manuniia-3] => (item=mysql)
+
+TASK [grafana : Create a grafana container] ************************************
+ok: [manuniia-3]
+
+TASK [grafana : Create CNAME for grafana] **************************************
+ok: [manuniia-3]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [manuniia-3]
+
+TASK [nginx : Copy nginx configuration] ****************************************
+ok: [manuniia-3]
+
+TASK [nginx : meta] ************************************************************
+
+TASK [nginx : Ensure nginx and exporter are enable and running] ****************
+ok: [manuniia-3] => (item=nginx)
+ok: [manuniia-3] => (item=prometheus-nginx-exporter)
+
+PLAY [influxdb] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-3]
+
+TASK [influxdb : check if already installed influxdb] **************************
+ok: [manuniia-3]
+
+TASK [influxdb : download influxdb] ********************************************
+skipping: [manuniia-3]
+
+TASK [influxdb : add InfluxDB repository key] **********************************
+ok: [manuniia-3]
+
+TASK [influxdb : Add InfluxDB APT repository] **********************************
+ok: [manuniia-3]
+
+TASK [influxdb : install influxdb] *********************************************
+skipping: [manuniia-3]
+
+TASK [influxdb : Change influxdb conf file] ************************************
+ok: [manuniia-3]
+
+TASK [influxdb : Create directory for influxdb-stats-exporter] *****************
+ok: [manuniia-3]
+
+TASK [influxdb : Download InfluxDB Stats Exporter binary] **********************
+ok: [manuniia-3]
+
+TASK [influxdb : Create system file for influxdb exporter] *********************
+ok: [manuniia-3]
+
+TASK [influxdb : Ensure influxdb and exporter are enable and running] **********
+ok: [manuniia-3] => (item=influxdb)
+ok: [manuniia-3] => (item=prometheus-influxdb-stats-exporter)
+
+TASK [influxdb : install telegraf] *********************************************
+ok: [manuniia-3]
+
+TASK [influxdb : Create telegraf.conf] *****************************************
+ok: [manuniia-3]
+
+TASK [influxdb : Ensure telegraf is enable and running] ************************
+ok: [manuniia-3]
+
+TASK [influxdb : Create /home/backup/influxdb directory] ***********************
+ok: [manuniia-3]
+
+TASK [influxdb : Create cron file for influxdb] ********************************
+ok: [manuniia-3]
+
+TASK [influxdb : Create CNAME for influxdb] ************************************
+ok: [manuniia-3]
+
+TASK [influxdb : Create CNAME for telegraf] ************************************
+ok: [manuniia-3]
+
+PLAY [keepalived] **************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : Ensure /etc/keepalived directory is present] ****************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [keepalived : create conf] ************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : create script] **********************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : install Keepalived] *****************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [keepalived : check if already downloaded keepalived] *********************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : Download and install the keepalived stats Exporter] *********
+skipping: [manuniia-1]
+skipping: [manuniia-2]
+
+TASK [keepalived : Unarchive a file that is already on the remote machine] *****
+skipping: [manuniia-1]
+skipping: [manuniia-2]
+
+TASK [keepalived : Create a directory for keepalived_stats_exporter] ***********
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : Create keepalived_stats_exporter service] *******************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [keepalived : Ensure keepalived and exporter are enable and running] ******
+ok: [manuniia-1] => (item=keepalived)
+ok: [manuniia-2] => (item=keepalived)
+ok: [manuniia-1] => (item=prometheus-keepalived-stats-exporter)
+ok: [manuniia-2] => (item=prometheus-keepalived-stats-exporter)
+
+PLAY [haproxy] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [manuniia-1]
+ok: [manuniia-2]
+
+TASK [haproxy : install Haproxy] ***********************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [haproxy : create conf] ***************************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [haproxy : create path for exporter] **************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+TASK [haproxy : Ensure haproxy and exporter are enable and running] ************
+ok: [manuniia-2] => (item=haproxy)
+ok: [manuniia-1] => (item=haproxy)
+ok: [manuniia-2] => (item=prometheus-haproxy-exporter)
+ok: [manuniia-1] => (item=prometheus-haproxy-exporter)
+
+TASK [haproxy : Create CNAME for haproxy] **************************************
+ok: [manuniia-2]
+ok: [manuniia-1]
+
+PLAY RECAP *********************************************************************
+manuniia-1                 : ok=60   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+manuniia-2                 : ok=60   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+manuniia-3                 : ok=73   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+
 + date
-Thu Dec 12 22:29:44 EET 2024
+Sat Dec 14 16:40:01 EET 2024
